@@ -1,0 +1,78 @@
+@import 'mixins'
+
+$black: #040404
+
+.statement-declaration
+  +font-styling($black, 'Times New Roman', 12px, 14px, 300)
+
+  .bold
+    font-weight: bold
+
+  .border-top
+    border-top: solid 1px $black
+
+  .border-bottom
+    border-bottom: solid 1px $black
+
+  .border-left
+    border-left: solid 1px $black
+
+  .border-right
+    border-right: solid 1px $black
+
+  .all-border
+    border: solid 1px $black
+
+  .declaration_block
+    border-spacing: 0
+    width: 100%
+
+    .header
+      text-align: center
+      text-transform: uppercase
+
+    .where
+      display: inline-block
+      margin: 5px 0 2px 4px
+
+    .dept-name
+      display: inline-block
+      text-align: center
+      width: calc(100% - 120px)
+
+    .dept-link
+      +font-styling($black, 'Times New Roman', 8px, 11px, 300)
+      text-align: center
+
+    .iam
+      display: inline-block
+      margin-left: 4px
+
+    .operation-name
+      display: inline-block
+      margin-top: 4px
+      text-align: center
+      width: calc(100% - 60px)
+
+    .request
+      display: inline-block
+
+    .person-link
+      +font-styling($black, 'Times New Roman', 8px, 11px, 300)
+      text-align: center
+
+    .vehiсle-operation
+      border-bottom: solid 1px $black
+      margin: 0 -1px
+      padding: 2px 3px
+
+      &:last-child
+        border-bottom: none
+
+    .action-name
+      margin-left: 4px
+      text-align: center 
+
+    .up-link
+      +font-styling($black, 'Times New Roman', 8px, 11px, 300)
+      text-align: center 

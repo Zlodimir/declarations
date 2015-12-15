@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'social-share-button'
+gem 'rails-i18n'
 #gem 'backoffice', path: 'engines/backoffice'
 
 group :development do
