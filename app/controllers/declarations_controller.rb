@@ -1,0 +1,3 @@
+class DeclarationsController < ApplicationController
+
+end

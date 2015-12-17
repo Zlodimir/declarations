@@ -1,0 +1,100 @@
+.declaration-form
+  .heading
+    = t('declaration_form.heading')
+
+  = form_for declaration do |f|
+    = f.label :operation_id
+
+    .form-group
+      = select_tag :root_operation_id, options_for_select(Operation.only_root.map{ |o| [o.name, o.id] }), data: { path: operations_path(), type: 'get' }, class: 'form-control'
+    .form-group
+      = f.select :operation_id, options_for_select(Operation.by_root_operation(Operation.only_root.first.id).map{ |o| [o.name, o.id] }), {},class: 'form-control'
+
+    label.custom-heading.text-center 
+      = t('declaration_form.owner_heading')
+
+    .media-tabs
+      .media-tabs-headers
+        = link_to t('declaration_form.fl'), '#', class: 'media-tab-header active js-tab-header', data: { tab: :fl }
+        = link_to t('declaration_form.ul'), '#', class: 'media-tab-header js-tab-header', data: { tab: :ul }
+
+      .item-tab data-tab='fl'
+        .form-group
+          = f.label :owner_last_name
+          = f.text_field :owner_last_name, class: 'form-control'
+
+        .form-group
+          = f.label :owner_first_name
+          = f.text_field :owner_first_name, class: 'form-control'
+
+        .form-group
+          = f.label :owner_second_name
+          = f.text_field :owner_second_name, class: 'form-control'
+
+        .form-group
+          = f.label :owner_birth_date
+          = f.text_field :owner_birth_date, start_year: 1930, class: 'form-control datepicker'
+
+        label.custom-heading.text-center 
+          = t('declaration_form.owner_document_heading')
+
+        .row
+          .col-sm-4
+            .form-group
+              = f.label :owner_doc_series, class: 'text-center'
+              = f.text_field :owner_doc_series, class: 'form-control text-center'
+          .col-sm-4
+            .form-group
+              = f.label :owner_doc_number, class: 'text-center'
+              = f.text_field :owner_doc_number, class: 'form-control text-center'
+          .col-sm-4
+            .form-group
+              = f.label :owner_doc_date, class: 'text-center'
+              = f.text_field :owner_doc_date, start_year: 1990, class: 'form-control datepicker'
+
+        .form-group
+          = f.label :owner_doc_dept
+          = f.text_field :owner_doc_dept, class: 'form-control'
+
+        .form-group
+          = f.label :owner_address_fl
+          = f.text_field :owner_address_fl, class: 'form-control'
+
+      .item-tab.hidden data-tab='ul'
+        .form-group
+          = f.label :owner_name
+          = f.text_field :owner_name, class: 'form-control'
+
+        .form-group
+          = f.label :owner_registration_date
+          = f.text_field :owner_registration_date, start_year: 1990, class: 'form-control datepicker'
+
+        .form-group
+          = f.label :owner_inn
+          = f.text_field :owner_inn, class: 'form-control'
+
+        .form-group
+          = f.label :owner_address_ul
+          = f.text_field :owner_address_ul, class: 'form-control'
+
+      .row
+        .col-sm-6
+          .form-group
+            = f.label :owner_telephone, class: 'text-center'
+            = f.text_field :owner_telephone, class: 'form-control'
+        .col-sm-6
+          .form-group
+            = f.label :owner_email, class: 'text-center'
+            = f.text_field :owner_email, class: 'form-control'
+
+      label.custom-heading.text-center 
+        = t('declaration_form.vehicle_heading')
+
+      .form-group
+        = f.label :vehicle_model
+        = f.text_field :vehicle_model, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_year
+        = f.select :vehicle_year, options_for_select((1930..Date.today.year).to_a.reverse.map {|y| [y, y] }), {}, class: 'form-control'
+    
