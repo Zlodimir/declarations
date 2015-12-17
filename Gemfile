@@ -16,6 +16,7 @@ gem 'social-share-button'
 gem 'rails-i18n'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'uglifier', '>= 1.3.0'
 #gem 'backoffice', path: 'engines/backoffice'
 
 group :development do

@@ -98,3 +98,6 @@
         = f.label :vehicle_year
         = f.select :vehicle_year, options_for_select((1930..Date.today.year).to_a.reverse.map {|y| [y, y] }), {}, class: 'form-control'
     
+      .form-group
+        = f.label :vehicle_year
+        = f.select :vehicle_year, options_for_select((1930..Date.today.year).to_a.reverse.map {|y| [y, y] }), {}, class: 'form-control'
