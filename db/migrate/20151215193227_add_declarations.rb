@@ -6,6 +6,16 @@ class AddDeclarations < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :vehicle_types do |t|
+      t.string :name, limit: 255, null: false
+      t.timestamps
+    end
+
+    create_table :vehicle_categories do |t|
+      t.string :name, limit: 25, null: false
+      t.timestamps
+    end
+
     create_table :declarations do |t|
       t.date    :date
       t.integer :operation_id, null: false
@@ -35,13 +45,15 @@ class AddDeclarations < ActiveRecord::Migration
       t.string  :trustee_telephone, limit: 10
       t.string  :vehicle_model, limit: 100, null: false
       t.integer :vehicle_year, null: false
-      t.string  :vehicle_type, limit: 255
+      t.integer :vehicle_type_id
+      t.integer :vehicle_category_id
       t.string  :vehicle_color, limit: 255
       t.string  :vehicle_regnum, limit: 12
       t.string  :vehicle_vin, limit: 17
       t.string  :vehicle_body, limit: 20
       t.string  :vehicle_chassis, limit: 20
-      t.integer :vehicle_power
+      t.float   :vehicle_power_hp
+      t.float   :vehicle_power_kvt
       t.string  :vehicle_ecological, limit: 5
       t.integer :vehicle_weight_min
       t.integer :vehicle_weight_max
@@ -49,11 +61,14 @@ class AddDeclarations < ActiveRecord::Migration
     end
 
     add_foreign_key :declarations, :operations, on_delete: :cascade
+    add_foreign_key :declarations, :vehicle_types, on_delete: :cascade
+    add_foreign_key :declarations, :vehicle_categories, on_delete: :cascade
 
-    create_table :vehicle_types do |t|
-      t.string :name, limit: 255, null: false
-      t.timestamps
-    end
+    VehicleCategory.create(name: 'A')
+    VehicleCategory.create(name: 'B')
+    VehicleCategory.create(name: 'C')
+    VehicleCategory.create(name: 'D')
+    VehicleCategory.create(name: 'E-прицеп')
 
     reg = Operation.create(root_operation_id: nil, name: 'Зарегистрировать')
     change = Operation.create(root_operation_id: nil, name: 'Внести изменения')

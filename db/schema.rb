@@ -45,13 +45,15 @@ ActiveRecord::Schema.define(version: 20151215193227) do
     t.string   "trustee_telephone",       limit: 10
     t.string   "vehicle_model",           limit: 100, null: false
     t.integer  "vehicle_year",                        null: false
-    t.string   "vehicle_type",            limit: 255
+    t.integer  "vehicle_type_id"
+    t.integer  "vehicle_category_id"
     t.string   "vehicle_color",           limit: 255
     t.string   "vehicle_regnum",          limit: 12
     t.string   "vehicle_vin",             limit: 17
     t.string   "vehicle_body",            limit: 20
     t.string   "vehicle_chassis",         limit: 20
-    t.integer  "vehicle_power"
+    t.float    "vehicle_power_hp"
+    t.float    "vehicle_power_kvt"
     t.string   "vehicle_ecological",      limit: 5
     t.integer  "vehicle_weight_min"
     t.integer  "vehicle_weight_max"
@@ -66,6 +68,12 @@ ActiveRecord::Schema.define(version: 20151215193227) do
     t.datetime "updated_at"
   end
 
+  create_table "vehicle_categories", force: :cascade do |t|
+    t.string   "name",       limit: 25, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
     t.datetime "created_at"
@@ -73,4 +81,6 @@ ActiveRecord::Schema.define(version: 20151215193227) do
   end
 
   add_foreign_key "declarations", "operations", on_delete: :cascade
+  add_foreign_key "declarations", "vehicle_categories", on_delete: :cascade
+  add_foreign_key "declarations", "vehicle_types", on_delete: :cascade
 end
