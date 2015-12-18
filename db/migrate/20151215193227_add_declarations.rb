@@ -1,5 +1,5 @@
 class AddDeclarations < ActiveRecord::Migration
-  def change
+  def up
     create_table :operations do |t|
       t.integer :root_operation_id
       t.string :name
@@ -98,5 +98,12 @@ class AddDeclarations < ActiveRecord::Migration
     VehicleType.create(name: 'Легковой')
     VehicleType.create(name: 'Грузовой')
     VehicleType.create(name: 'Мотоцикл')
+  end
+
+  def down
+    drop_table :operations
+    drop_table :declarations
+    drop_table :vehicle_categories
+    drop_table :vehicle_types
   end
 end
