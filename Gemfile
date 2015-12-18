@@ -25,7 +25,6 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano-db-rollback'
 end
 
 group :staging do
