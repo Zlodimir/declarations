@@ -23,7 +23,7 @@ class AddDeclarations < ActiveRecord::Migration
       t.string  :owner_last_name, limit: 255
       t.string  :owner_first_name, limit: 255
       t.string  :owner_second_name, limit: 255
-      t.string  :owner_name, limit: 255
+      t.string  :owner_company_name, limit: 255
       t.date    :owner_birth_date
       t.date    :owner_registration_date
       t.string  :owner_doc_series, limit: 8
@@ -35,7 +35,7 @@ class AddDeclarations < ActiveRecord::Migration
       t.string  :owner_address_ul, limit: 300
       t.string  :owner_telephone, limit: 10
       t.string  :owner_email, limit: 35
-      t.boolean :owner_company
+      t.boolean :owner_company, default: false
       t.string  :trustee_last_name, limit: 255
       t.string  :trustee_first_name, limit: 255
       t.string  :trustee_second_name, limit: 255

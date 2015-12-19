@@ -12,7 +12,7 @@ ru:
         owner_last_name: 'Фамилия'
         owner_first_name: 'Имя'
         owner_second_name: 'Отчество'
-        owner_name: 'Наименование юридического лица'
+        owner_company_name: 'Наименование юридического лица'
         owner_birth_date: 'Дата рождения'
         owner_registration_date: 'Дата регистрации ЮЛ'
         owner_doc_series: 'Серия'

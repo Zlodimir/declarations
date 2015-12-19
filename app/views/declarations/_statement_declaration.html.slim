@@ -11,7 +11,7 @@
           = t('statement_declaration.declaration_block.where')
 
         .dept-name
-          | г. Запердаево Восточное, Еблищевского района
+          = @declaration.dept_name
     tr
       td.border-bottom colspan='2'
         .dept-link
@@ -19,7 +19,7 @@
         .iam
           = t('statement_declaration.declaration_block.iam')
         .operation-name.border-bottom
-          | Скупердяев Дормидонт Антонинович
+          = @declaration.owner_company? ? @declaration.owner_company_name : @declaration.owner_name
         .request
           = t('statement_declaration.declaration_block.request')
         .person-link

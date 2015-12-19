@@ -8,8 +8,7 @@
     .form-group.without-padding
       = f.label :dept_name
       = f.text_field :dept_name, class: 'form-control'
-      = content_tag :span, '', class: 'glyphicon glyphicon-info-sign', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
-       
+      = content_tag :span, '', class: 'info', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
 
     .form-group.without-padding
       = f.label :operation_id
@@ -23,11 +22,11 @@
 
     .media-tabs
       .media-tabs-headers
-        = link_to t('declaration_form.fl'), '#', class: 'media-tab-header active js-tab-header', data: { tab: :fl }
-        = link_to t('declaration_form.ul'), '#', class: 'media-tab-header js-tab-header', data: { tab: :ul }
+        .btn-group.btn-group-sm
+          = link_to t('declaration_form.fl'), '#', class: "btn btn-default #{'active' unless @declaration.owner_company?} js-tab-header", data: { tab: :fl }
+          = link_to t('declaration_form.ul'), '#', class: "btn btn-default #{'active' if @declaration.owner_company?} js-tab-header", data: { tab: :ul }
 
-      .item-tab data-tab='fl'
-
+      = content_tag :div, class: "item-tab #{'hidden' if @declaration.owner_company?}", data: { tab: 'fl' } do
         .form-group
           .col-sm-3.without-padding
             = f.label :owner_last_name, class: 'control-label text-left'
@@ -83,10 +82,10 @@
           = f.label :owner_address_fl
           = f.text_field :owner_address_fl, class: 'form-control'
 
-      .item-tab.hidden data-tab='ul'
+      = content_tag :div, class: "item-tab #{'hidden' unless @declaration.owner_company?}", data: { tab: 'ul' } do
         .form-group
-          = f.label :owner_name
-          = f.text_field :owner_name, class: 'form-control'
+          = f.label :owner_company_name
+          = f.text_field :owner_company_name, class: 'form-control'
 
         .form-group
           = f.label :owner_registration_date
@@ -155,11 +154,11 @@
         .col-sm-4
           .form-group
               = f.label :vehicle_power_hp, class: 'control-label text-left'
-              = f.number_field :vehicle_power_hp, min: 10, max: 700, class: 'form-control text-center'
+              = f.number_field :vehicle_power_hp, min: 10, max: 700, step: 'any', class: 'form-control text-center'
         .col-sm-4.col-sm-offset-4
           .form-group
               = f.label :vehicle_power_kvt, class: 'control-label'
-              = f.number_field :vehicle_power_kvt, class: 'form-control text-center'
+              = f.number_field :vehicle_power_kvt, step: 'any', class: 'form-control text-center'
 
       .row
         .col-sm-4
