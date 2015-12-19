@@ -26,7 +26,7 @@ $grey: #64616B
     width: 55px
 
     &.active
-      +font-styling(#FFFFFF, 'Raleway', 12px, 35px, 700)
+      +font-styling(#FFFFFF, 'Roboto', 12px, 35px, 700)
       background: rgba(100, 97, 107, 0.5)
 
     &:nth-child(2)
@@ -60,3 +60,18 @@ $grey: #64616B
 
   .without-padding
     padding: 0
+
+  .input-error
+    +font-styling(#d00000, 'Roboto', 10px, 12px, 700)
+    display: block
+    float: right
+    margin-top: 6px
+
+  .form-group
+    position: relative
+
+  .glyphicon-info-sign
+    font-size: 20px
+    position: absolute
+    right: -25px
+    top: 32px

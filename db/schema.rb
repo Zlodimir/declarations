@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20151215193227) do
 
   create_table "declarations", force: :cascade do |t|
     t.date     "date"
+    t.string   "dept_name",               limit: 255
     t.integer  "operation_id",                        null: false
-    t.string   "owner_last_name",         limit: 255, null: false
-    t.string   "owner_first_name",        limit: 255, null: false
+    t.string   "owner_last_name",         limit: 255
+    t.string   "owner_first_name",        limit: 255
     t.string   "owner_second_name",       limit: 255
     t.string   "owner_name",              limit: 255
     t.date     "owner_birth_date"
@@ -30,12 +31,13 @@ ActiveRecord::Schema.define(version: 20151215193227) do
     t.date     "owner_doc_date"
     t.string   "owner_doc_dept",          limit: 255
     t.string   "owner_inn",               limit: 15
-    t.string   "owner_address_fl",        limit: 300, null: false
-    t.string   "owner_address_ul",        limit: 300, null: false
+    t.string   "owner_address_fl",        limit: 300
+    t.string   "owner_address_ul",        limit: 300
     t.string   "owner_telephone",         limit: 10
     t.string   "owner_email",             limit: 35
-    t.string   "trustee_last_name",       limit: 255, null: false
-    t.string   "trustee_first_name",      limit: 255, null: false
+    t.boolean  "owner_company"
+    t.string   "trustee_last_name",       limit: 255
+    t.string   "trustee_first_name",      limit: 255
     t.string   "trustee_second_name",     limit: 255
     t.string   "trustee_doc_series",      limit: 8
     t.string   "trustee_doc_number",      limit: 8
@@ -43,8 +45,8 @@ ActiveRecord::Schema.define(version: 20151215193227) do
     t.string   "trustee_doc_dept",        limit: 255
     t.string   "trustee_address",         limit: 300
     t.string   "trustee_telephone",       limit: 10
-    t.string   "vehicle_model",           limit: 100, null: false
-    t.integer  "vehicle_year",                        null: false
+    t.string   "vehicle_model",           limit: 100
+    t.integer  "vehicle_year"
     t.integer  "vehicle_type_id"
     t.integer  "vehicle_category_id"
     t.string   "vehicle_color",           limit: 255

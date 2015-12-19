@@ -8,6 +8,7 @@ ru:
       declaration:
         operation_id: 'Регистрационная операция'
         date: 'Дата'
+        dept_name: 'Регистрационное подразделение'
         owner_last_name: 'Фамилия'
         owner_first_name: 'Имя'
         owner_second_name: 'Отчество'
@@ -44,5 +45,5 @@ ru:
         vehicle_power_hp: 'Мощность, л.с.'
         vehicle_power_kvt: 'Мощность, кВт'
         vehicle_ecological: 'Экологический класс'
-        vehicle_weight_min: 'Масса без нагрузки'
+        vehicle_weight_min: 'Масса без нагрузки, кг'
         vehicle_weight_max: 'Разрешенная максимальная масса, кг'

@@ -3,7 +3,6 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        #render pdf: 'zalupa'
       end
     end
   end

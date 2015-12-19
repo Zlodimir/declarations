@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'declarations#new'
 
-  resources :declarations, only: [:create, :show]
+  resources :declarations, only: [:create, :show, :edit, :update]
   resources :operations, only: :index
 end

@@ -9,6 +9,5 @@ $ ->
     tab = $(@).data('tab')
     $container.find(".item-tab[data-tab=#{tab}]").removeClass('hidden')
 
-    return if $('.gigs-title').length == 0
-    $container.prev().find('.gigs-title').addClass('hidden')
-    $container.prev().find(".#{$(@).text().toLowerCase()}-gigs").removeClass('hidden')
+    return if $('.declaration-form').length == 0
+    $('#declaration_owner_company').val(if tab is 'fl' then 'false' else 'true')
