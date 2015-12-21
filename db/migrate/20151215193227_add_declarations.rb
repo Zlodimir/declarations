@@ -16,8 +16,13 @@ class AddDeclarations < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :ecological_classes do |t|
+      t.string :name, limit: 25, null: false
+      t.timestamps
+    end      
+
     create_table :declarations do |t|
-      t.date    :date
+      t.date    :date, default: Time.now
       t.string  :dept_name, limit: 255
       t.integer :operation_id, null: false
       t.string  :owner_last_name, limit: 255
@@ -47,8 +52,8 @@ class AddDeclarations < ActiveRecord::Migration
       t.string  :trustee_telephone, limit: 10
       t.string  :vehicle_model, limit: 100
       t.integer :vehicle_year
-      t.integer :vehicle_type_id
-      t.integer :vehicle_category_id
+      t.string  :vehicle_type
+      t.string  :vehicle_category, limit: 10
       t.string  :vehicle_color, limit: 255
       t.string  :vehicle_regnum, limit: 12
       t.string  :vehicle_vin, limit: 17
@@ -56,16 +61,19 @@ class AddDeclarations < ActiveRecord::Migration
       t.string  :vehicle_chassis, limit: 20
       t.float   :vehicle_power_hp
       t.float   :vehicle_power_kvt
-      t.string  :vehicle_ecological, limit: 5
       t.integer :vehicle_weight_min
       t.integer :vehicle_weight_max
+      t.string  :vehicle_ecological_class, limit: 50
       t.timestamps
     end
 
     add_foreign_key :declarations, :operations, on_delete: :cascade
-    add_foreign_key :declarations, :vehicle_types, on_delete: :cascade
-    add_foreign_key :declarations, :vehicle_categories, on_delete: :cascade
 
+    EcologicalClass.create(name: 'Первый')
+    EcologicalClass.create(name: 'Второй')
+    EcologicalClass.create(name: 'Третий')
+    EcologicalClass.create(name: 'Четвертый')
+    EcologicalClass.create(name: 'Пятый')
     VehicleCategory.create(name: 'A')
     VehicleCategory.create(name: 'B')
     VehicleCategory.create(name: 'C')
@@ -107,5 +115,6 @@ class AddDeclarations < ActiveRecord::Migration
     drop_table :vehicle_categories, force: :cascade
     drop_table :vehicle_types, force: :cascade
     drop_table :declarations, force: :cascade
+    drop_table :ecological_classes
   end
 end

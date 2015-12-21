@@ -34,7 +34,7 @@ class DeclarationsController < ApplicationController
   end
 
   def find_declaration
-    @declaration = Declaration.find(params[:id])
+    @declaration = Declaration.find_by_id(params[:id])
     unless @declaration.present?
       render_not_found
     end

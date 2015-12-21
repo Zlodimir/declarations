@@ -3,4 +3,5 @@
 #= require jquery_ujs
 #= require social-likes.min
 #= require bootstrap
+#= require selectize
 #= require_tree .

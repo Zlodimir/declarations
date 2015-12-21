@@ -15,11 +15,11 @@
     tr
       td.border-bottom colspan='2'
         .dept-link
-          = t('statement_declaration.declaration_block.dept')
+            = t('statement_declaration.declaration_block.dept')
         .iam
           = t('statement_declaration.declaration_block.iam')
         .operation-name.border-bottom
-          = @declaration.owner_company? ? @declaration.owner_company_name : @declaration.owner_name
+          = @declaration.trustee? ? @declaration.trustee_name : @declaration.owner_name
         .request
           = t('statement_declaration.declaration_block.request')
         .person-link
@@ -32,15 +32,15 @@
           = t('statement_declaration.declaration_block.up_link')
       td.border-bottom
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.register_actions.new_vehicle')
+          = operation_processing(@declaration, 5, t('statement_declaration.declaration_block.register_actions.new_vehicle'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.register_actions.import_vehicle')
+          = operation_processing(@declaration, 6, t('statement_declaration.declaration_block.register_actions.import_vehicle'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.register_actions.military_vehicle')
+          = operation_processing(@declaration, 7, t('statement_declaration.declaration_block.register_actions.military_vehicle'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.register_actions.individual_vehicle')
+          = operation_processing(@declaration, 8, t('statement_declaration.declaration_block.register_actions.individual_vehicle'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.register_actions.temporary_vehicle')
+          = operation_processing(@declaration, 9, t('statement_declaration.declaration_block.register_actions.temporary_vehicle'))
     tr
       td.border-right.border-bottom
         .action-name
@@ -49,17 +49,17 @@
           = t('statement_declaration.declaration_block.up_link')
       td.border-bottom
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.owner')
+          = operation_processing(@declaration, 10, t('statement_declaration.declaration_block.change_actions.owner'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.owner_attributes')
+          = operation_processing(@declaration, 11, t('statement_declaration.declaration_block.change_actions.owner_attributes'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.car_plate')
+          = operation_processing(@declaration, 12, t('statement_declaration.declaration_block.change_actions.car_plate'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.vehicle_passport')
+          = operation_processing(@declaration, 13, t('statement_declaration.declaration_block.change_actions.vehicle_passport'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.registration_data')
+          = operation_processing(@declaration, 14, t('statement_declaration.declaration_block.change_actions.registration_data'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.change_actions.construction')
+          = operation_processing(@declaration, 15, t('statement_declaration.declaration_block.change_actions.construction'))
     tr
       td.border-right.border-bottom
         .action-name
@@ -68,9 +68,9 @@
           = t('statement_declaration.declaration_block.up_link')
       td.border-bottom
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.end_actions.foreign')
+          = operation_processing(@declaration, 16, t('statement_declaration.declaration_block.end_actions.foreign'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.end_actions.trash')
+          = operation_processing(@declaration, 17, t('statement_declaration.declaration_block.end_actions.trash'))
     tr
       td.border-right.border-bottom
         .action-name
@@ -79,24 +79,24 @@
           = t('statement_declaration.declaration_block.up_link')
       td.border-bottom
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.finish_actions.lost')
+          = operation_processing(@declaration, 18, t('statement_declaration.declaration_block.finish_actions.lost'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.finish_actions.theft')
+          = operation_processing(@declaration, 19, t('statement_declaration.declaration_block.finish_actions.theft'))
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.finish_actions.sell')
+          = operation_processing(@declaration, 20, t('statement_declaration.declaration_block.finish_actions.sell'))
     tr
       td.border-right
         .action-name
           = t('statement_declaration.declaration_block.vehicle')
       td
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.vehicle_attrs.model')
+          = t('statement_declaration.declaration_block.vehicle_attrs.model', model: @declaration.vehicle_model)
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.vehicle_attrs.year')
+          = t('statement_declaration.declaration_block.vehicle_attrs.year', year: @declaration.vehicle_year)
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.vehicle_attrs.vin')
+          = t('statement_declaration.declaration_block.vehicle_attrs.vin', vin: @declaration.vehicle_vin)
         .vehiсle-operation
-          = t('statement_declaration.declaration_block.vehicle_attrs.car_plate')
+          = t('statement_declaration.declaration_block.vehicle_attrs.car_plate', regnum: @declaration.vehicle_regnum)
 
   table.owner-block
     tr
@@ -105,13 +105,13 @@
           = t('statement_declaration.owner_block.header')
 
         .owner-name
-          | Скупердяев Дормидонт Антонинович
+          = @declaration.owner_company? ? @declaration.owner_company_name : @declaration.owner_name
         .owner-link
           = t('statement_declaration.owner_block.owner_link')
         .date-text
           = t('statement_declaration.owner_block.date')
         .date-value
-          | 12.02.1965
+          = @declaration.owner_company? ? @declaration.owner_registration_date : @declaration.owner_birth_date
         .document
           .document-text
             = t('statement_declaration.owner_block.document')
@@ -120,12 +120,12 @@
           .document-link
             = t('statement_declaration.owner_block.document_link')
           .document-value
-            | Паспорт РФ, 2399 034544, выдан ОВД Злоебучего района г. Пидровска, 23.09.2008
+            = @declaration.owner_document unless @declaration.owner_company?
 
         .inn-text
           = t('statement_declaration.owner_block.inn')
         .inn-value
-          | 123123123
+          = @declaration.owner_inn
 
         .address
           .address-text
@@ -136,16 +136,16 @@
           .address-link
             = t('statement_declaration.owner_block.address_link')
           .address-value
-            | г. Запердаево Восточное, Еблищевского района, Ссаной области, ул. Распездяево. дом 9, строение - халупа
+            = @declaration.owner_company? ? @declaration.owner_address_ul : @declaration.owner_address_fl
 
         .telephone-text
           = t('statement_declaration.owner_block.telephone')
         .telephone-value
-          | 908 444 33 33 
+          = @declaration.owner_telephone
         .email-text
           = t('statement_declaration.owner_block.email')
         .email-value
-          | zzz@zzzz.ru
+          = @declaration.owner_email
 
   table.trustee-block
     tr
@@ -154,7 +154,7 @@
           = t('statement_declaration.trustee_block.header')
 
         .trustee-name
-          | Дрищев Феофан Маркович
+          = @declaration.trustee_name
         .trustee-link
           = t('statement_declaration.trustee_block.trustee_link')
 
@@ -166,7 +166,7 @@
           .document-link
             = t('statement_declaration.trustee_block.document_link')
           .document-value
-            | Паспорт РФ, 2399 034544, выдан ОВД Злоебучего района г. Пидровска, 23.09.2008
+            = @declaration.trustee_document
 
         .address
           .address-text
@@ -177,8 +177,15 @@
           .address-link
             = t('statement_declaration.trustee_block.address_link')
           .address-value
-            | г. Запердаево Восточное, Еблищевского района, Ссаной области, ул. Распездяево. дом 10
+            = @declaration.trustee_address
 
+        .footer-values
+          .telephone-value
+            = @declaration.trustee_telephone
+          .date-value
+            = @declaration.date
+          .signature-value
+            = @declaration.sign_person
         .footer
           .line1
           .telephone

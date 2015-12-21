@@ -2,7 +2,7 @@
 
 $black: #040404
 
-.statement-declaration
+.statement-declaration, .statement-declaration-second
   +font-styling($black, 'Times New Roman', 12px, 14px, 300)
 
   .bold
@@ -22,6 +22,18 @@ $black: #040404
 
   .all-border
     border: solid 2px $black
+
+  .line-under
+    text-decoration: underline
+
+  .line-through
+    text-decoration: line-through
+
+  .valign-top
+    vertical-align: top
+
+  .uppercase
+    text-transform: uppercase
 
   .declaration_block
     border-spacing: 0
@@ -80,7 +92,6 @@ $black: #040404
   .owner-block
     border-spacing: 0
     margin-top: 7px
-    //padding: 4px
     width: 100%
 
     .header
@@ -89,7 +100,7 @@ $black: #040404
 
     .owner-name
       border-bottom: solid 1px $black
-      margin-left: 4px
+      height: 14px
       margin-top: 4px
       text-align: center
       width: calc(100% - 10px)
@@ -130,7 +141,9 @@ $black: #040404
 
       .document-value
         +font-styling($black, 'Times New Roman', 12px, 22px, 300)
+        height: 40px
         left: 213px
+        margin-right: 4px
         position: absolute
         top: 3px
 
@@ -178,10 +191,10 @@ $black: #040404
         width: calc(100% - 10px)
 
       .address-value
-        +font-styling($black, 'Times New Roman', 12px, 22px, 300)
-        left: 460px
+        +font-styling($black, 'Times New Roman', 12px, 21px, 300)
+        left: 6px
         position: absolute
-        top: 3px
+        top: 26px
 
       .address-link
         +font-styling($black, 'Times New Roman', 8px, 11px, 300)
@@ -198,6 +211,7 @@ $black: #040404
     .telephone-value
       border-bottom: solid 1px $black
       display: inline-block
+      margin-bottom: 4px
       text-align: center
       width: calc(25% - 25px)
 
@@ -209,7 +223,7 @@ $black: #040404
     .email-value
       border-bottom: solid 1px $black
       display: inline-block
-      margin-bottom: 5px
+      //margin-bottom: 5px
       text-align: center
       width: calc(75% - 230px)
 
@@ -224,7 +238,7 @@ $black: #040404
 
     .trustee-name
       border-bottom: solid 1px $black
-      margin-left: 4px
+      height: 14px
       margin-top: 4px
       text-align: center
       width: calc(100% - 10px)
@@ -254,7 +268,9 @@ $black: #040404
 
       .document-value
         +font-styling($black, 'Times New Roman', 12px, 22px, 300)
+        height: 40px
         left: 213px
+        margin-right: 4px
         position: absolute
         top: 3px
 
@@ -291,10 +307,10 @@ $black: #040404
         width: calc(100% - 10px)
 
       .address-value
-        +font-styling($black, 'Times New Roman', 12px, 22px, 300)
-        left: 230px
+        +font-styling($black, 'Times New Roman', 12px, 21px, 300)
+        left: 6px
         position: absolute
-        top: 3px
+        top: 26px
 
       .address-link
         +font-styling($black, 'Times New Roman', 8px, 11px, 300)
@@ -302,6 +318,23 @@ $black: #040404
         text-align: center
         top: 43px
         width: 100%
+
+    .footer-values
+      position: relative
+
+      .telephone-value
+        display: inline-block
+        margin-left: 5px
+        margin-top: 5px
+
+      .date-value
+        display: inline-block
+        margin-left: 15%
+
+      .signature-value
+        position: absolute
+        right: 130px
+        top: 2px
 
     .footer
       position: relative
@@ -311,7 +344,6 @@ $black: #040404
         display: inline-block
         margin-bottom: 15px
         margin-left: 4px
-        margin-top: 20px
         width: 10%
 
       .line2
@@ -324,19 +356,118 @@ $black: #040404
       .telephone
         left: 25px
         position: absolute
-        top: 20px
+        top: 0
 
       .date
         left: 17%
         position: absolute
-        top: 20px
+        top: 0
 
       .signature
         left: 40%
         position: absolute
-        top: 20px
+        top: 0
 
       .name
         right: 110px
         position: absolute
-        top: 20px
+        top: 0
+
+.statement-declaration-second
+
+  .result-wrapper
+    margin-left: 4px
+    margin-top: 17px
+
+  .result-line
+    margin-bottom: 15px
+    margin-top: 10px
+    position: relative
+    width: 99%
+
+    span
+      +font-styling($black, 'Times New Roman', 8px, 11px, 300)
+
+    & span:nth-child(1)
+      float: left
+      margin-left: 5px
+
+    & span:nth-child(2)
+      position: absolute
+      left: calc(50% - 16px)
+
+    & span:nth-child(3)
+      float: right
+
+  .vehicle-block
+    margin-top: 10px
+
+    td
+      padding-left: 4px
+
+    .confirmation
+      margin: 5px 0
+      text-align: center
+
+  .changes-block
+    margin-top: 10px
+
+    .changes
+      padding: 4px
+
+      & span:first-child
+        font-weight: bold
+        padding-right: 4px
+        text-transform: uppercase
+
+      & span:last-child
+        +font-styling($black, 'Times New Roman', 8px, 8px, 300)
+
+    .changes-list
+      position: relative
+
+    .changes-value
+      left: 7px
+      line-height: 12px
+      position: absolute
+      right: 4px
+      top: 6px
+
+  .wanted-block
+    margin-top: 10px
+
+    .wanted
+      padding: 4px
+      text-align: center
+
+      & span:first-child
+        font-weight: bold
+        padding-right: 4px
+        text-transform: uppercase
+
+  .decision-block
+    margin-top: 10px
+    width: 100%
+
+    & td:first-child
+      width: 30%
+
+    & td:last-child
+      width: 70%
+
+    & tr:first-child
+      height: 60px
+
+    .decision
+      padding: 4px
+      text-align: center
+
+      & span:first-child
+        font-weight: bold
+        padding-right: 4px
+        text-transform: uppercase
+
+
+
+
+  

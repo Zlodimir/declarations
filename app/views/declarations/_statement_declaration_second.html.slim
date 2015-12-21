@@ -1,0 +1,147 @@
+.statement-declaration-second
+  table.vehicle-block.all-border
+    col width='34%'
+    col width='33%'
+    col width='33%'
+
+    tr
+      td.border-bottom.bold.valign-top.text-center.uppercase
+        = t('statement_declaration_second.vehicle_block.heading')
+      td.border-bottom.valign-top.text-center.border-left
+        = t('statement_declaration_second.vehicle_block.passport')
+      td.border-bottom.valign-top.text-center.border-left
+        = t('statement_declaration_second.vehicle_block.revision')
+
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.model')
+      td.border-bottom.border-left
+        = @declaration.vehicle_model
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.year')
+      td.border-bottom.border-left
+        = @declaration.vehicle_year
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.type')
+      td.border-bottom.border-left
+        = @declaration.vehicle_type + '/' + @declaration.vehicle_category
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.color')
+      td.border-bottom.border-left
+        = @declaration.vehicle_color
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.regnum')
+      td.border-bottom.border-left
+        = @declaration.vehicle_regnum
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.vin')
+      td.border-bottom.border-left
+        = @declaration.vehicle_vin
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.body')
+      td.border-bottom.border-left
+        = @declaration.vehicle_body
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.chassis')
+      td.border-bottom.border-left
+        = @declaration.vehicle_chassis
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.power')
+      td.border-bottom.border-left
+        = @declaration.vehicle_power_hp.to_s + '/' + @declaration.vehicle_power_kvt.to_s
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.ecological')
+      td.border-bottom.border-left
+        = @declaration.vehicle_ecological_class
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.max_weight')
+      td.border-bottom.border-left
+        = @declaration.vehicle_weight_max
+      td.border-bottom.border-left
+    tr
+      td.border-bottom
+        = t('statement_declaration_second.vehicle_block.min_weight')
+      td.border-bottom.border-left
+        = @declaration.vehicle_weight_min
+      td.border-bottom.border-left
+    tr
+      td colspan='3'
+        .confirmation
+          = t('statement_declaration_second.vehicle_block.confirm')
+
+        .result-line.border-top
+          span = t('statement_declaration_second.vehicle_block.date')
+          span = t('statement_declaration_second.vehicle_block.sign')
+          span = t('statement_declaration_second.vehicle_block.official')
+
+  table.changes-block.all-border
+    col width='40%'
+    col width='60%'
+
+    tr
+      td.border-bottom.border-right.changes
+        span = t('statement_declaration_second.changes_block.heading')
+        span = t('statement_declaration_second.changes_block.heading_link')
+
+      td.border-bottom.changes-list
+        .changes-value.line-under
+          | ds mfnsd fbjhds bmdhjsb jhdsbf jbdh bdf bhdbf jdfhb jdfhbg jdfhb jdfhb jhdfbjbg dfj bjdhfbg jdfbjgbd jhbdfj hbfjhb jdfh bdfdf bjdfh bfhb g
+    tr
+      td colspan='2'
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.vehicle_block.date')
+            span = t('statement_declaration_second.vehicle_block.sign')
+            span = t('statement_declaration_second.vehicle_block.official')
+
+
+  table.wanted-block.all-border
+    col width='30%'
+    col width='70%'
+
+    tr
+      td.border-bottom.border-right.wanted
+        span = t('statement_declaration_second.wanted_block.heading')
+
+      td.border-bottom.wanted-list
+    tr
+      td colspan='2'
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.vehicle_block.date')
+            span = t('statement_declaration_second.vehicle_block.sign')
+            span = t('statement_declaration_second.vehicle_block.official')
+
+  table.decision-block.all-border
+    tr
+      td.border-bottom.border-right.decision
+        span = t('statement_declaration_second.decision_block.heading')
+
+      td.border-bottom
+    tr
+      td colspan='2'
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.vehicle_block.date')
+            span = t('statement_declaration_second.vehicle_block.sign')
+            span = t('statement_declaration_second.vehicle_block.official')

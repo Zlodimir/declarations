@@ -17,48 +17,54 @@ ActiveRecord::Schema.define(version: 20151215193227) do
   enable_extension "plpgsql"
 
   create_table "declarations", force: :cascade do |t|
-    t.date     "date"
-    t.string   "dept_name",               limit: 255
-    t.integer  "operation_id",                                        null: false
-    t.string   "owner_last_name",         limit: 255
-    t.string   "owner_first_name",        limit: 255
-    t.string   "owner_second_name",       limit: 255
-    t.string   "owner_company_name",      limit: 255
+    t.date     "date",                                 default: '2015-12-21'
+    t.string   "dept_name",                limit: 255
+    t.integer  "operation_id",                                                null: false
+    t.string   "owner_last_name",          limit: 255
+    t.string   "owner_first_name",         limit: 255
+    t.string   "owner_second_name",        limit: 255
+    t.string   "owner_company_name",       limit: 255
     t.date     "owner_birth_date"
     t.date     "owner_registration_date"
-    t.string   "owner_doc_series",        limit: 8
-    t.string   "owner_doc_number",        limit: 8
+    t.string   "owner_doc_series",         limit: 8
+    t.string   "owner_doc_number",         limit: 8
     t.date     "owner_doc_date"
-    t.string   "owner_doc_dept",          limit: 255
-    t.string   "owner_inn",               limit: 15
-    t.string   "owner_address_fl",        limit: 300
-    t.string   "owner_address_ul",        limit: 300
-    t.string   "owner_telephone",         limit: 10
-    t.string   "owner_email",             limit: 35
-    t.boolean  "owner_company",                       default: false
-    t.string   "trustee_last_name",       limit: 255
-    t.string   "trustee_first_name",      limit: 255
-    t.string   "trustee_second_name",     limit: 255
-    t.string   "trustee_doc_series",      limit: 8
-    t.string   "trustee_doc_number",      limit: 8
+    t.string   "owner_doc_dept",           limit: 255
+    t.string   "owner_inn",                limit: 15
+    t.string   "owner_address_fl",         limit: 300
+    t.string   "owner_address_ul",         limit: 300
+    t.string   "owner_telephone",          limit: 10
+    t.string   "owner_email",              limit: 35
+    t.boolean  "owner_company",                        default: false
+    t.string   "trustee_last_name",        limit: 255
+    t.string   "trustee_first_name",       limit: 255
+    t.string   "trustee_second_name",      limit: 255
+    t.string   "trustee_doc_series",       limit: 8
+    t.string   "trustee_doc_number",       limit: 8
     t.date     "trustee_doc_date"
-    t.string   "trustee_doc_dept",        limit: 255
-    t.string   "trustee_address",         limit: 300
-    t.string   "trustee_telephone",       limit: 10
-    t.string   "vehicle_model",           limit: 100
+    t.string   "trustee_doc_dept",         limit: 255
+    t.string   "trustee_address",          limit: 300
+    t.string   "trustee_telephone",        limit: 10
+    t.string   "vehicle_model",            limit: 100
     t.integer  "vehicle_year"
-    t.integer  "vehicle_type_id"
-    t.integer  "vehicle_category_id"
-    t.string   "vehicle_color",           limit: 255
-    t.string   "vehicle_regnum",          limit: 12
-    t.string   "vehicle_vin",             limit: 17
-    t.string   "vehicle_body",            limit: 20
-    t.string   "vehicle_chassis",         limit: 20
+    t.string   "vehicle_type"
+    t.string   "vehicle_category",         limit: 10
+    t.string   "vehicle_color",            limit: 255
+    t.string   "vehicle_regnum",           limit: 12
+    t.string   "vehicle_vin",              limit: 17
+    t.string   "vehicle_body",             limit: 20
+    t.string   "vehicle_chassis",          limit: 20
     t.float    "vehicle_power_hp"
     t.float    "vehicle_power_kvt"
-    t.string   "vehicle_ecological",      limit: 5
     t.integer  "vehicle_weight_min"
     t.integer  "vehicle_weight_max"
+    t.string   "vehicle_ecological_class", limit: 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ecological_classes", force: :cascade do |t|
+    t.string   "name",       limit: 25, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,6 +89,4 @@ ActiveRecord::Schema.define(version: 20151215193227) do
   end
 
   add_foreign_key "declarations", "operations", on_delete: :cascade
-  add_foreign_key "declarations", "vehicle_categories", on_delete: :cascade
-  add_foreign_key "declarations", "vehicle_types", on_delete: :cascade
 end
