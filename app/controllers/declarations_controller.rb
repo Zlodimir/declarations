@@ -1,6 +1,14 @@
 class DeclarationsController < ApplicationController
   before_action :find_declaration, only: [:edit, :show, :update]
 
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf
+    end
+  end
+
+
   def new
     @declaration = Declaration.new
   end
@@ -22,7 +30,6 @@ class DeclarationsController < ApplicationController
     if @declaration.save
       redirect_to declaration_path(@declaration)
     else
-      Rails.logger.debug("EBAT!!!!!!!!#{@declaration.errors.full_messages.to_sentence}")
       render 'new'
     end
   end

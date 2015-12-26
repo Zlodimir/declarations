@@ -128,7 +128,7 @@
       td colspan='2'
         .result-wrapper
           .result-line.border-top
-            span = t('statement_declaration_second.vehicle_block.date')
+            span = t('statement_declaration_second.wanted_block.date')
             span = t('statement_declaration_second.vehicle_block.sign')
             span = t('statement_declaration_second.vehicle_block.official')
 
@@ -142,6 +142,104 @@
       td colspan='2'
         .result-wrapper
           .result-line.border-top
-            span = t('statement_declaration_second.vehicle_block.date')
+            span = t('statement_declaration_second.decision_block.date')
+            span = t('statement_declaration_second.vehicle_block.sign')
+            span = t('statement_declaration_second.vehicle_block.official')
+
+  table.taken-block.all-border
+    col width='70%'
+    col width='30%'
+
+    tr
+      td.border-bottom.taken colspan='2'
+        span = t('statement_declaration_second.taken_documents_block.heading')
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.regnum')
+      td.border-bottom
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.veh_passport')
+      td.border-bottom
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.own_doc')
+      td.border-bottom
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.insurance')
+      td.border-bottom
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.other')
+      td.border-bottom
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.taken_documents_block.payment')
+      td.border-bottom
+
+    tr
+      td colspan='2'
+        .text-center
+          = t('statement_declaration_second.taken_documents_block.checked')
+
+    tr
+      td colspan='2'
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.taken_documents_block.date')
+            span = t('statement_declaration_second.vehicle_block.sign')
+            span = t('statement_declaration_second.vehicle_block.official')
+
+  table.get-block.all-border
+    col width='70%'
+    col width='30%'
+
+    tr
+      td.border-bottom.get colspan='2'
+        span = t('statement_declaration_second.get_documents_block.heading')
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.get_documents_block.regnum')
+      td.border-bottom
+        | Zalupa
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.get_documents_block.veh_passport')
+      td.border-bottom
+        | Zalupa
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.get_documents_block.sts')
+      td.border-bottom
+        | Zalupa
+
+    tr
+      td.border-bottom.border-right
+        span = t('statement_declaration_second.get_documents_block.other')
+      td.border-bottom
+        | Zalupa
+
+    tr
+      td colspan='2'
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.get_documents_block.date')
+            span
+            span = t('statement_declaration_second.get_documents_block.sign')
+
+  table.sign-block.all-border
+    tr
+      td
+        .result-wrapper
+          .result-line.border-top
+            span = t('statement_declaration_second.sign_block.date')
             span = t('statement_declaration_second.vehicle_block.sign')
             span = t('statement_declaration_second.vehicle_block.official')

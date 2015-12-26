@@ -1,3 +1,5 @@
-= link_to t('statement_declaration.declaration_edit'), edit_declaration_path(@declaration), class: 'declaration-edit-link'
+- if controller.request.format != :pdf
+  = link_to t('statement_declaration.declaration_edit'), edit_declaration_path(@declaration), class: 'declaration-edit-link'
+  = link_to 'zalupa', declaration_path(@declaration, format: :pdf), class: 'declaration-edit-link'
 = render 'statement_declaration'
 = render 'statement_declaration_second'

@@ -14,9 +14,8 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'social-share-button'
 gem 'rails-i18n'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 gem 'uglifier', '>= 1.3.0'
+gem 'prawn-rails'
 #gem 'backoffice', path: 'engines/backoffice'
 
 group :development do
@@ -43,7 +42,5 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
 end
 

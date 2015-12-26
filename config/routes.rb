@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'declarations#new'
 
-  resources :declarations, only: [:create, :show, :edit, :update]
+  get '/z/:id'        => 'declarations#show', as: :declaration
+  get '/z/new'        => 'declarations#new', as: :declarations
+  get '/z/edit/:id'   => 'declarations#edit', as: :edit_declaration
+  patch '/z/:id'      => 'declarations#update', as: :update_declaration
+  post '/z/new'       => 'declarations#create', as: :create_declaration
   resources :operations, only: :index
 end
