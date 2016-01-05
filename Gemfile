@@ -8,14 +8,23 @@ gem 'pg'
 gem 'sprockets', '~> 2.8'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'slim-rails'
-gem 'devise'
-gem 'omniauth-facebook'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'social-share-button'
 gem 'rails-i18n'
 gem 'uglifier', '>= 1.3.0'
 gem 'prawn-rails'
+gem 'visibilityjs'
+gem 'gon'
+gem 'jquery-cookie-rails'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-vkontakte'
+gem 'omniauth-mailru'
+gem 'font-awesome-rails'
 #gem 'backoffice', path: 'engines/backoffice'
 
 group :development do
@@ -24,6 +33,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'letter_opener'
 end
 
 group :staging do

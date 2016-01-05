@@ -4,15 +4,26 @@ html
     meta charset='utf-8'
     meta http-equiv='X-UA-Compatible' content='IE=edge'
     meta name='viewport' content='width=device-width, initial-scale=1'
-    title
-      | Declarations
+    title Declarations
     = stylesheet_link_tag 'application', media: 'all'
-
     link href='//fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700' rel='stylesheet' type='text/css'
     = csrf_meta_tags
+    = include_gon
     = render 'layouts/head_content'
   body
+    = render 'shared/signup_modal'
+    = render 'shared/signin_modal'
+    = render 'shared/forgot_password_modal'
+    = render 'shared/header'
     = render 'shared/social_share'
+
+    #notification-area
+      - if flash.present?
+        - flash.each do |name, msg|
+          = content_tag :div, class: "alert #{flash_class(name)}" do
+            = content_tag :button, class: 'close', type: 'button', data: { dismiss: 'alert' } do
+              | &times;
+            = msg.html_safe
     .clearfix
     .content-wrapper
       = yield

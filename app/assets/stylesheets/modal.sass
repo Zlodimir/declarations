@@ -1,0 +1,59 @@
+@import 'mixins'
+
+$grey: #64616B
+
+.modal
+  .modal-header
+    border-bottom: none
+
+    .modal-close
+      +size(16px, 16px)
+      +background-image('icon_close', 16px 16px)
+      position: absolute
+      right: 20px
+      top: 15px
+
+    .heading
+      +font-styling(#2C3E50, 'Roboto', 15px, 17px, 500)
+      margin-right: 20px
+      text-align: center
+
+  .header
+    +font-styling(#2C3E50, 'Roboto', 17px, 17px, 500)
+    border-bottom: 1px solid #2C3E50
+    text-align: center
+    padding-bottom: 4px
+    margin: 20px 0 10px 0
+
+  .form-group
+    margin-left: 0
+    margin-right: 0
+
+  .form-control
+    height: 40px
+    width: 300px
+
+  .warning
+    +font-styling(#ff0000, 'Roboto', 12px, 15px)
+
+  .checkbox-inline
+    padding-top: 0
+
+  .forgot-password
+    position: relative
+
+    .forgot-password-link
+      color: #2C3E50
+      font-weight: bold
+      text-decoration: none
+
+#signup-form, #signin-form, #forgot-password-form
+  .modal-body
+    margin: 0 auto
+    width: 340px
+
+  .btn
+    height: 40px
+    outline: 0
+    padding-top: 7px
+    width: 300px    

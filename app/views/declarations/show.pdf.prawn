@@ -198,4 +198,195 @@ prawn_document(page_size: 'A4', margin: 15) do |pdf|
       pdf.text @declaration.sign_person, align: :center
     end
   end
+
+  pdf.start_new_page
+  pdf.stroke do
+    ###################################
+    # vehicle block
+    ###################################
+    pdf.rectangle [0, 810], 565, 270
+    pdf.horizontal_line 0, 565, at: 760
+    pdf.horizontal_line 0, 565, at: 745
+    pdf.horizontal_line 0, 565, at: 730
+    pdf.horizontal_line 0, 565, at: 715
+    pdf.horizontal_line 0, 565, at: 700
+    pdf.horizontal_line 0, 565, at: 685
+    pdf.horizontal_line 0, 565, at: 670
+    pdf.horizontal_line 0, 565, at: 655
+    pdf.horizontal_line 0, 565, at: 640
+    pdf.horizontal_line 0, 565, at: 625
+    pdf.horizontal_line 0, 565, at: 610
+    pdf.horizontal_line 0, 565, at: 595
+    pdf.horizontal_line 0, 565, at: 580
+    pdf.vertical_line 810, 580, at: 186
+    pdf.vertical_line 810, 580, at: 375
+    pdf.horizontal_line 5, 555, at: 553
+
+    pdf.bounding_box([1, 809], width: 185, height: 30) do
+      #pdf.stroke_bounds
+      pdf.text t('statement_declaration_second.vehicle_block.heading').mb_chars.upcase.to_s, style: :bold, align: :center
+    end
+
+    pdf.bounding_box([186, 809], width: 185, height: 50) do
+      #pdf.stroke_bounds
+      pdf.text t('statement_declaration_second.vehicle_block.passport'), align: :center
+    end
+
+    pdf.bounding_box([380, 809], width: 185, height: 50) do
+      #pdf.stroke_bounds
+      pdf.text t('statement_declaration_second.vehicle_block.revision'), align: :center
+    end
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.model'), at: [5, 748]
+    pdf.draw_text @declaration.vehicle_model, at: [190, 748]
+    
+    pdf.draw_text t('statement_declaration_second.vehicle_block.year'), at: [5, 733]
+    pdf.draw_text @declaration.vehicle_year, at: [190, 733]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.type'), at: [5, 718]
+    pdf.draw_text @declaration.vehicle_type + '/' + @declaration.vehicle_category, at: [190, 718]
+        
+    pdf.draw_text t('statement_declaration_second.vehicle_block.color'), at: [5, 703]
+    pdf.draw_text @declaration.vehicle_color, at: [190, 703]
+        
+    pdf.draw_text t('statement_declaration_second.vehicle_block.regnum'), at: [5, 688]
+    pdf.draw_text @declaration.vehicle_regnum, at: [190, 688]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.vin'), at: [5, 673]
+    pdf.draw_text @declaration.vehicle_vin, at: [190, 673]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.body'), at: [5, 658]
+    pdf.draw_text @declaration.vehicle_body, at: [190, 658]
+        
+    pdf.draw_text t('statement_declaration_second.vehicle_block.chassis'), at: [5, 643]
+    pdf.draw_text @declaration.vehicle_chassis, at: [190, 643]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.power'), at: [5, 628]
+    pdf.draw_text @declaration.vehicle_power_hp.to_s + '/' + @declaration.vehicle_power_kvt.to_s, at: [190, 628]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.ecological'), at: [5, 613]
+    pdf.draw_text @declaration.vehicle_ecological_class, at: [190, 613]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.max_weight'), at: [5, 598]
+    pdf.draw_text @declaration.vehicle_weight_max, at: [190, 598]
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.min_weight'), at: [5, 583]
+    pdf.draw_text @declaration.vehicle_weight_min, at: [190, 583]
+
+
+    pdf.draw_text t('statement_declaration_second.vehicle_block.confirm'), at: [130, 570]
+    pdf.draw_text t('statement_declaration_second.vehicle_block.date'), at: [10, 545], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 545], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 545], size: 8
+
+    ###################################
+    # changes block
+    ###################################
+    pdf.rectangle [0, 535], 565, 80
+    pdf.horizontal_line 0, 565, at: 485
+    pdf.vertical_line 535, 485, at: 262
+    pdf.horizontal_line 266, 560, at: 520
+    pdf.horizontal_line 266, 560, at: 505
+    pdf.horizontal_line 266, 560, at: 490
+    pdf.horizontal_line 5, 555, at: 465
+
+    pdf.bounding_box([4, 532], width: 257, height: 48) do
+      #pdf.stroke_bounds
+      pdf.text "<b>#{t('statement_declaration_second.changes_block.heading').mb_chars.upcase.to_s}</b> <font size='8'>#{t('statement_declaration_second.changes_block.heading_link')}</font>", inline_format: true
+    end
+    
+    pdf.draw_text t('statement_declaration_second.vehicle_block.date'), at: [10, 458], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 458], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 458], size: 8
+
+    ###################################
+    # decision block
+    ###################################
+    pdf.rectangle [0, 450], 565, 155
+    pdf.horizontal_line 0, 565, at: 400
+    pdf.horizontal_line 0, 565, at: 370
+    pdf.horizontal_line 0, 565, at: 325
+    pdf.vertical_line 450, 400, at: 170
+    pdf.vertical_line 370, 325, at: 170
+    pdf.horizontal_line 5, 555, at: 380
+    pdf.horizontal_line 5, 555, at: 305
+
+    pdf.bounding_box([4, 445], width: 165, height: 40) do
+      #pdf.stroke_bounds
+      pdf.text t('statement_declaration_second.wanted_block.heading').mb_chars.upcase.to_s, align: :center, style: :bold
+    end
+
+    pdf.draw_text t('statement_declaration_second.wanted_block.date'), at: [10, 374], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 374], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 374], size: 8
+
+    pdf.bounding_box([4, 359], width: 165, height: 30) do
+      #pdf.stroke_bounds
+      pdf.text t('statement_declaration_second.decision_block.heading').mb_chars.upcase.to_s, align: :center, style: :bold
+    end
+
+    pdf.draw_text t('statement_declaration_second.decision_block.date'), at: [10, 298], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 298], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 298], size: 8
+    
+    ###################################
+    # taken block
+    ###################################
+    pdf.rectangle [0, 290], 565, 145
+    pdf.horizontal_line 0, 565, at: 275
+    pdf.horizontal_line 0, 565, at: 260
+    pdf.horizontal_line 0, 565, at: 245
+    pdf.horizontal_line 0, 565, at: 230
+    pdf.horizontal_line 0, 565, at: 215
+    pdf.horizontal_line 0, 565, at: 200
+    pdf.horizontal_line 0, 565, at: 185
+    pdf.vertical_line 275, 185, at: 350
+    pdf.horizontal_line 5, 555, at: 157
+
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.heading').mb_chars.upcase.to_s, style: :bold, at: [195, 279]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.regnum'), at: [5, 264]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.veh_passport'), at: [5, 249]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.own_doc'), at: [5, 234]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.insurance'), at: [5, 219]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.other'), at: [5, 204]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.payment'), at: [5, 189]
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.checked'), at: [230, 175]
+
+    pdf.draw_text t('statement_declaration_second.taken_documents_block.date'), at: [10, 150], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 150], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 150], size: 8
+
+    ###################################
+    # issue block
+    ###################################
+    pdf.rectangle [0, 140], 565, 105
+    pdf.horizontal_line 0, 565, at: 125
+    pdf.horizontal_line 0, 565, at: 110
+    pdf.horizontal_line 0, 565, at: 95
+    pdf.horizontal_line 0, 565, at: 80
+    pdf.horizontal_line 0, 565, at: 65
+    pdf.vertical_line 125, 65, at: 350
+    pdf.horizontal_line 5, 555, at: 48
+
+    pdf.draw_text t('statement_declaration_second.get_documents_block.heading').mb_chars.upcase.to_s, style: :bold, at: [210, 127]
+
+    pdf.draw_text t('statement_declaration_second.get_documents_block.regnum'), at: [5, 112]
+    pdf.draw_text t('statement_declaration_second.get_documents_block.veh_passport'), at: [5, 97]
+    pdf.draw_text t('statement_declaration_second.get_documents_block.sts'), at: [5, 82]
+    pdf.draw_text t('statement_declaration_second.get_documents_block.other'), at: [5, 67]
+
+    pdf.draw_text t('statement_declaration_second.get_documents_block.date'), at: [10, 41], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 41], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 41], size: 8
+
+    ###################################
+    # sign block
+    ###################################
+    pdf.rectangle [0, 30], 565, 30
+    pdf.horizontal_line 5, 555, at: 13
+
+    pdf.draw_text t('statement_declaration_second.sign_block.date'), at: [10, 6], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 6], size: 8
+    pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 6], size: 8
+  end
 end

@@ -13,7 +13,7 @@
     .form-group.without-padding
       = f.label :dept_name
       = f.text_field :dept_name, class: 'form-control'
-      = content_tag :span, '', class: 'info', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
+      = fa_icon 'info 2x', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
 
     .form-group.without-padding
       = f.label :operation_id

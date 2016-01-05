@@ -1,7 +1,9 @@
 #= require jquery
 #= require jquery-ui/datepicker
 #= require jquery_ujs
+#= require jquery.cookie
 #= require social-likes.min
 #= require bootstrap
 #= require selectize
+#= require visibility
 #= require_tree .

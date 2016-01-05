@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   patch '/z/:id'      => 'declarations#update', as: :update_declaration
   post '/z/new'       => 'declarations#create', as: :create_declaration
   resources :operations, only: :index
+
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                                    registrations: 'users/registrations',
+                                    sessions: 'users/sessions',
+                                    passwords: 'users/passwords' }
 end

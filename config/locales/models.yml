@@ -47,3 +47,9 @@ ru:
         vehicle_weight_min: 'Масса без нагрузки, кг'
         vehicle_weight_max: 'Разрешенная максимальная масса, кг'
         vehicle_ecological_class: 'Экологический класс'
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        username: 'Имя пользователя'
+        remember_me: 'Запомнить меня'

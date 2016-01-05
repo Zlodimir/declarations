@@ -30,6 +30,7 @@ ru:
     mailru: 'Поделиться ссылкой в Моём мире'
   statement_declaration:
     declaration_edit: 'Редактировать заявление'
+    declaration_pdf_view: 'Просмотреть PDF версию'
     declaration_block:
       header: 'Заявление'
       where: 'В Госавтоинспекцию'
@@ -140,5 +141,23 @@ ru:
       sign: '(подпись заявителя в получении)'
     sign_block:
       date: '(дата, время оформления документов)'
-
-
+  menu:
+    top:
+      signin: 'Вход'
+      signup: 'Регистрация'
+      signout: 'Выход'
+  modal:
+    signup:
+      heading: 'Зарегистрировавшись, Вы получите возможность работать с ранее созданными заявлениями'
+      email_title: 'Регистрация через почту'
+      social_title: 'Регистрация через соц.сеть'
+      button: 'Зарегистрироваться'
+    signin:
+      email_title: 'Вход через почту'
+      social_title: 'Вход через соц.сеть'
+      button: 'Войти'
+      forgot_password: 'Забыли пароль?'
+      heading: 'Вы получите письмо с инструкциями по сбросу пароля в течении нескольких минут'
+    forgot_password:
+      title: 'Восстановление пароля'
+      button: 'Восстановить'

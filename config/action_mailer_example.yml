@@ -1,0 +1,14 @@
+production:
+  default_url_host: mreo-assistent.ru
+  default_from: info@mreo-assistent.ru
+  port: ...
+  address: ...
+  user_name: ...
+  password: ...
+  domain: mreo-assistent.ru
+
+development:
+  default_url_host: http://mreo-assistent.dev
+  default_from: info@mreo-assistent.dev
+  port: 1025
+  address: localhost

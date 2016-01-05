@@ -17,3 +17,5 @@
 /tmp
 /public
 /config/database.yml
+/config/action_mailer.yml
+/config/omniauth.yml

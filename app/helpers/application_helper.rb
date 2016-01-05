@@ -39,4 +39,15 @@ module ApplicationHelper
     end
     options_for_select(options, selected)
   end
+
+  def flash_class(alert_name)
+    case alert_name
+    when :notice
+      'alert-info'
+    when :alert
+      'alert-error'
+    else
+      ''
+    end
+  end
 end
