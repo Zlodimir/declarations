@@ -1,13 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def sign_in_or_redirect
     user = User.from_omniauth(request.env['omniauth.auth'], omniauth_params)
-    Rails.logger.debug("EBAT!!!!!!!!!!omniauth_params!!!!#{omniauth_params}")
-    Rails.logger.debug("EBAT!!!!!!!!!!request.env['omniauth.auth']!!!!#{request.env['omniauth.auth']}")
+    #user.save!
     if user.persisted?
       sign_in_and_redirect user, event: :authentication
       set_flash_message(:notice, :success, kind: request.env['omniauth.auth'].provider.capitalize) if is_navigational_format?
     else
-      session['devise.facebook_data'] = request.env['omniauth.auth']
+      #session["devise.#{request.env['omniauth.auth'].provider}_data"] = request.env['omniauth.auth']
       redirect_to root_path
     end
   end

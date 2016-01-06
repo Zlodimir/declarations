@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160104083830) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username", "provider"], name: "index_users_on_username_and_provider", unique: true, using: :btree
 
   create_table "vehicle_categories", force: :cascade do |t|
     t.string   "name",       limit: 25, null: false

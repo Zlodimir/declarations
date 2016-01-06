@@ -3,7 +3,5 @@
   = link_to '', '', class: 'provider vkontakte' 
   /user_omniauth_authorize_path(:vkontakte)
   = link_to '', user_omniauth_authorize_path(:mailru), class: 'provider mailru' 
-  = link_to '', '', class: 'provider google'
-  /user_omniauth_authorize_path(:google)
-  = link_to '', '', class: 'provider twitter'
-  /user_omniauth_authorize_path(:twitter)
+  = link_to '', user_omniauth_authorize_path(:google), class: 'provider google'
+  = link_to '', user_omniauth_authorize_path(:twitter), class: 'provider twitter'
