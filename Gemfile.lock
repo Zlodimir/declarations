@@ -231,11 +231,6 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    signet (0.7.2)
-      addressable (~> 2.3)
-      faraday (~> 0.9)
-      jwt (~> 1.5)
-      multi_json (~> 1.10)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -321,7 +316,6 @@ DEPENDENCIES
   rails-i18n
   sass-rails (~> 5.0)
   shoulda
-  signet
   slim-rails
   social-share-button
   spring
