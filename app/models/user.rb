@@ -25,16 +25,15 @@ class User < ActiveRecord::Base
   private
 
   def self.auth_username(auth)
-    Rails.logger.debug("EBAT!!!!!!!!!!!!!#{auth}")
     case auth.provider
-    when 'facebook', 'twitter'
+    when 'facebook', 'twitter', 'google'
       auth.info.name
     end
   end
 
   def self.auth_email(auth)
     case auth.provider
-    when 'facebook'
+    when 'facebook', 'google'
       auth.info.email
     when 'twitter'
       "#{auth.info.name}@twitter.com"

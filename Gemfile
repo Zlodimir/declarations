@@ -24,7 +24,9 @@ gem 'omniauth-google'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-vkontakte'
 gem 'omniauth-mailru'
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'font-awesome-rails'
+
 #gem 'backoffice', path: 'engines/backoffice'
 
 group :development do
@@ -33,6 +35,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'letter_opener'
 end
 
