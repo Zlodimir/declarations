@@ -1,7 +1,6 @@
 .social-auth-block
   = link_to '', user_omniauth_authorize_path(:facebook), class: 'provider facebook'
-  = link_to '', '', class: 'provider vkontakte' 
-  /user_omniauth_authorize_path(:vkontakte)
+  = link_to '', user_omniauth_authorize_path(:vkontakte), class: 'provider vkontakte' 
   = link_to '', user_omniauth_authorize_path(:mailru), class: 'provider mailru' 
   = link_to '', user_omniauth_authorize_path(:google), class: 'provider google'
   = link_to '', user_omniauth_authorize_path(:twitter), class: 'provider twitter'
