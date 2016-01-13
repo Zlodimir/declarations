@@ -1,5 +1,5 @@
-set :stage,        :staging
-set :rails_env,    :staging
+set :stage,        :production
+set :rails_env,    :production
 set :deploy_to,    '/home/developer/declarations'
 set :unicorn_init, '/etc/init.d/declarations_unicorn'
 
