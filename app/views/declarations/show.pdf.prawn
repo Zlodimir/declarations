@@ -1,9 +1,9 @@
 prawn_document(page_size: 'A4', margin: 15) do |pdf|
   pdf.font_families.update(
   'times' => {
-    :bold => '/Users/zlodimir/ruby_projects/declarations_fonts/TimesNewRomanBold.ttf',
-    :italic => '/Users/zlodimir/ruby_projects/declarations_fonts/TimesNewRomanItalic.ttf',
-    :normal  => '/Users/zlodimir/ruby_projects/declarations_fonts/TimesNewRomanRegular.ttf' })
+    :bold => "#{Rails.root}/lib/assets/fonts/TimesNewRomanBold.ttf",
+    :italic => "#{Rails.root}/lib/assets/fonts/TimesNewRomanItalic.ttf",
+    :normal  => "#{Rails.root}/lib/assets/fonts/TimesNewRomanRegular.ttf" })
 
   pdf.font 'times', size: 12
   pdf.draw_text t('statement_declaration.declaration_block.header').mb_chars.upcase.to_s, style: :bold, at: [250, 800]
