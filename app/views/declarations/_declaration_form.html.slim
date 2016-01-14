@@ -1,244 +1,244 @@
 .declaration-form
-  - if Rails.env.production? 
-    .heading 
-      | Скоро все будет работать
-  - else
-    .heading
-      = t('declaration_form.heading')
+  / - if Rails.env.production? 
+  /   .heading 
+  /     | Скоро все будет работать
+  / - else
+  .heading
+    = t('declaration_form.heading')
 
-    = form_for @declaration, html: { class: 'form-horizontal' } do |f|
-      = f.hidden_field :owner_company
-      .form-group
-        .col-sm-1.col-sm-offset-4.without-padding
-          = f.label :date, class: 'control-label text-left'
-        .col-sm-2.without-padding
-          = f.text_field :date, class: 'form-control datepicker'
+  = form_for @declaration, html: { class: 'form-horizontal' } do |f|
+    = f.hidden_field :owner_company
+    .form-group
+      .col-sm-1.col-sm-offset-4.without-padding
+        = f.label :date, class: 'control-label text-left'
+      .col-sm-2.without-padding
+        = f.text_field :date, class: 'form-control datepicker'
 
-      .form-group.without-padding
-        = f.label :dept_name
-        = f.text_field :dept_name, class: 'form-control'
-        = fa_icon 'info 2x', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
+    .form-group.without-padding
+      = f.label :dept_name
+      = f.text_field :dept_name, class: 'form-control'
+      = fa_icon 'info 2x', data: { toggle: 'popover', title: t('declaration_form.popovers.help'),placement: 'left',  html: 'true', content: t('declaration_form.popovers.dept_name', link: link_to(t('declaration_form.popovers.gibdd_site'), 'http://www.gibdd.ru/struct/reg/', target: :blank)) }
 
-      .form-group.without-padding
-        = f.label :operation_id
-        = select_tag :root_operation_id, options_for_select(Operation.only_root.map{ |o| [o.name, o.id] }), data: { path: operations_path(), type: 'get' }, class: 'form-control'
-      .form-group.without-padding
-        = wrap_input @declaration, :operation_id do
-          = f.select :operation_id, options_for_select(Operation.by_root_operation(Operation.only_root.first.id).map{ |o| [o.name, o.id] }), {},class: 'form-control'
+    .form-group.without-padding
+      = f.label :operation_id
+      = select_tag :root_operation_id, options_for_select(Operation.only_root.map{ |o| [o.name, o.id] }), data: { path: operations_path(), type: 'get' }, class: 'form-control'
+    .form-group.without-padding
+      = wrap_input @declaration, :operation_id do
+        = f.select :operation_id, options_for_select(Operation.by_root_operation(Operation.only_root.first.id).map{ |o| [o.name, o.id] }), {},class: 'form-control'
+
+    label.custom-heading.text-center 
+      = t('declaration_form.owner_heading')
+
+    .media-tabs
+      .media-tabs-headers
+        .btn-group.btn-group-sm
+          = link_to t('declaration_form.fl'), '#', class: "btn btn-default #{'active' unless @declaration.owner_company?} js-tab-header", data: { tab: :fl }
+          = link_to t('declaration_form.ul'), '#', class: "btn btn-default #{'active' if @declaration.owner_company?} js-tab-header", data: { tab: :ul }
+
+      = content_tag :div, class: "item-tab #{'hidden' if @declaration.owner_company?}", data: { tab: 'fl' } do
+        .form-group
+          .col-sm-3.without-padding
+            = f.label :owner_last_name, class: 'control-label text-left'
+          .col-sm-9.without-padding
+            = f.text_field :owner_last_name, class: 'form-control'
+
+        .form-group
+          .col-sm-3.without-padding
+            = f.label :owner_first_name, class: 'control-label text-left'
+          .col-sm-9.without-padding
+            = f.text_field :owner_first_name, class: 'form-control'
+
+        .form-group
+          .col-sm-3.without-padding
+            = f.label :owner_second_name, class: 'control-label text-left'
+          .col-sm-9.without-padding
+            = f.text_field :owner_second_name, class: 'form-control'
+
+        .form-group
+          .col-sm-3.without-padding
+            = f.label :owner_birth_date, class: 'control-label text-left'
+          .col-sm-9.without-padding
+            = f.text_field :owner_birth_date, start_year: 1930, class: 'form-control datepicker'
+
+        label.custom-heading.text-center 
+          = t('declaration_form.owner_document_heading')
+
+        .row
+          .col-sm-4.inline-input
+            .form-group
+              .col-sm-5
+                = f.label :owner_doc_series, class: 'control-label float-right'
+              .col-sm-7
+                = f.text_field :owner_doc_series, class: 'form-control text-center'
+          .col-sm-4.inline-input
+            .form-group
+              .col-sm-5
+                = f.label :owner_doc_number, class: 'control-label float-right'
+              .col-sm-7
+                = f.text_field :owner_doc_number, class: 'form-control text-center'
+          .col-sm-4.inline-input
+            .form-group
+              .col-sm-5
+                = f.label :owner_doc_date, class: 'control-label float-right'
+              .col-sm-7
+                = f.text_field :owner_doc_date, start_year: 1990, class: 'form-control datepicker'
+
+        .form-group
+          = f.label :owner_doc_dept
+          = f.text_field :owner_doc_dept, class: 'form-control'
+
+        .form-group
+          = f.label :owner_address_fl
+          = f.text_field :owner_address_fl, class: 'form-control'
+
+      = content_tag :div, class: "item-tab #{'hidden' unless @declaration.owner_company?}", data: { tab: 'ul' } do
+        .form-group
+          = f.label :owner_company_name
+          = f.text_field :owner_company_name, class: 'form-control'
+
+        .form-group
+          = f.label :owner_registration_date
+          = f.text_field :owner_registration_date, start_year: 1990, class: 'form-control datepicker'
+
+        .form-group
+          = f.label :owner_inn
+          = f.text_field :owner_inn, class: 'form-control'
+
+        .form-group
+          = f.label :owner_address_ul
+          = f.text_field :owner_address_ul, class: 'form-control'
+
+      .row
+        .col-sm-4
+          .form-group
+              = f.label :owner_telephone, class: 'control-label text-left'
+              = f.text_field :owner_telephone, class: 'form-control'
+        .col-sm-4.col-sm-offset-4
+          .form-group
+              = f.label :owner_email, class: 'control-label'
+              = f.text_field :owner_email, class: 'form-control'
 
       label.custom-heading.text-center 
-        = t('declaration_form.owner_heading')
+        = t('declaration_form.vehicle_heading')
 
-      .media-tabs
-        .media-tabs-headers
-          .btn-group.btn-group-sm
-            = link_to t('declaration_form.fl'), '#', class: "btn btn-default #{'active' unless @declaration.owner_company?} js-tab-header", data: { tab: :fl }
-            = link_to t('declaration_form.ul'), '#', class: "btn btn-default #{'active' if @declaration.owner_company?} js-tab-header", data: { tab: :ul }
+      .form-group
+        = f.label :vehicle_model
+        = wrap_input @declaration, :vehicle_model do
+          = f.text_field :vehicle_model, class: 'form-control'
 
-        = content_tag :div, class: "item-tab #{'hidden' if @declaration.owner_company?}", data: { tab: 'fl' } do
+      .form-group
+        = f.label :vehicle_year
+        = wrap_input @declaration, :vehicle_year do
+          = f.select :vehicle_year, options_for_select((1930..Date.today.year).to_a.reverse.map {|y| [y, y] }), {}, id: 'vehicle-year'
+    
+      .form-group
+        = f.label :vehicle_type
+        = f.select :vehicle_type, vehicle_types(@declaration), {}, id: 'vehicle-type-id'
+
+      .form-group
+        = f.label :vehicle_category
+        = f.select :vehicle_category, vehicle_categories(@declaration), {}, id: 'vehicle-categories-id'
+
+      .form-group
+        = f.label :vehicle_color
+        = f.text_field :vehicle_color, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_regnum
+        = f.text_field :vehicle_regnum, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_vin
+        = f.text_field :vehicle_vin, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_body
+        = f.text_field :vehicle_body, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_chassis
+        = f.text_field :vehicle_chassis, class: 'form-control'
+
+      .form-group
+        = f.label :vehicle_ecological_class
+        = f.select :vehicle_ecological_class, ecological_classes(@declaration), {}, id: 'ecological-class-id'
+      .row
+        .col-sm-4
           .form-group
-            .col-sm-3.without-padding
-              = f.label :owner_last_name, class: 'control-label text-left'
-            .col-sm-9.without-padding
-              = f.text_field :owner_last_name, class: 'form-control'
-
+              = f.label :vehicle_power_hp, class: 'control-label text-left'
+              = f.number_field :vehicle_power_hp, min: 10, max: 700, step: 'any', class: 'form-control text-center'
+        .col-sm-4.col-sm-offset-4
           .form-group
-            .col-sm-3.without-padding
-              = f.label :owner_first_name, class: 'control-label text-left'
-            .col-sm-9.without-padding
-              = f.text_field :owner_first_name, class: 'form-control'
+              = f.label :vehicle_power_kvt, class: 'control-label'
+              = f.number_field :vehicle_power_kvt, step: 'any', class: 'form-control text-center'
 
+      .row
+        .col-sm-4
           .form-group
-            .col-sm-3.without-padding
-              = f.label :owner_second_name, class: 'control-label text-left'
-            .col-sm-9.without-padding
-              = f.text_field :owner_second_name, class: 'form-control'
-
+              = f.label :vehicle_weight_min, class: 'control-label text-left'
+              = f.number_field :vehicle_weight_min, min: 10, max: 20000, class: 'form-control text-center'
+        .col-sm-4.col-sm-offset-4
           .form-group
-            .col-sm-3.without-padding
-              = f.label :owner_birth_date, class: 'control-label text-left'
-            .col-sm-9.without-padding
-              = f.text_field :owner_birth_date, start_year: 1930, class: 'form-control datepicker'
+              = f.label :vehicle_weight_max, class: 'control-label'
+              = f.number_field :vehicle_weight_max, class: 'form-control text-center'
 
-          label.custom-heading.text-center 
-            = t('declaration_form.owner_document_heading')
+      label.custom-heading.text-center 
+        = t('declaration_form.trustee_heading')
 
-          .row
-            .col-sm-4.inline-input
-              .form-group
-                .col-sm-5
-                  = f.label :owner_doc_series, class: 'control-label float-right'
-                .col-sm-7
-                  = f.text_field :owner_doc_series, class: 'form-control text-center'
-            .col-sm-4.inline-input
-              .form-group
-                .col-sm-5
-                  = f.label :owner_doc_number, class: 'control-label float-right'
-                .col-sm-7
-                  = f.text_field :owner_doc_number, class: 'form-control text-center'
-            .col-sm-4.inline-input
-              .form-group
-                .col-sm-5
-                  = f.label :owner_doc_date, class: 'control-label float-right'
-                .col-sm-7
-                  = f.text_field :owner_doc_date, start_year: 1990, class: 'form-control datepicker'
+      .form-group
+        .col-sm-2.without-padding
+          = f.label :trustee_last_name, class: 'control-label text-left'
+        .col-sm-10.without-padding
+          = f.text_field :trustee_last_name, class: 'form-control'
 
+      .form-group
+        .col-sm-2.without-padding
+          = f.label :trustee_first_name, class: 'control-label text-left'
+        .col-sm-10.without-padding
+          = f.text_field :trustee_first_name, class: 'form-control'
+
+      .form-group
+        .col-sm-2.without-padding
+          = f.label :trustee_second_name, class: 'control-label text-left'
+        .col-sm-10.without-padding
+          = f.text_field :trustee_second_name, class: 'form-control'
+
+      label.custom-heading.text-center 
+        = t('declaration_form.trustee_document_heading')
+
+      .row
+        .col-sm-4.inline-input
           .form-group
-            = f.label :owner_doc_dept
-            = f.text_field :owner_doc_dept, class: 'form-control'
-
+            .col-sm-5
+              = f.label :trustee_doc_series, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_doc_series, class: 'form-control text-center'
+        .col-sm-4.inline-input
           .form-group
-            = f.label :owner_address_fl
-            = f.text_field :owner_address_fl, class: 'form-control'
-
-        = content_tag :div, class: "item-tab #{'hidden' unless @declaration.owner_company?}", data: { tab: 'ul' } do
+            .col-sm-5
+              = f.label :trustee_doc_number, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_doc_number, class: 'form-control text-center'
+        .col-sm-4.inline-input
           .form-group
-            = f.label :owner_company_name
-            = f.text_field :owner_company_name, class: 'form-control'
+            .col-sm-5
+              = f.label :trustee_doc_date, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_doc_date, start_year: 1990, class: 'form-control datepicker'
 
+      .form-group
+        = f.label :trustee_doc_dept
+        = f.text_field :trustee_doc_dept, class: 'form-control'
+
+      .form-group
+        = f.label :trustee_address
+        = f.text_field :trustee_address, class: 'form-control'
+
+      .row
+        .col-sm-4
           .form-group
-            = f.label :owner_registration_date
-            = f.text_field :owner_registration_date, start_year: 1990, class: 'form-control datepicker'
+              = f.label :trustee_telephone, class: 'control-label text-left'
+              = f.text_field :trustee_telephone, class: 'form-control'
 
-          .form-group
-            = f.label :owner_inn
-            = f.text_field :owner_inn, class: 'form-control'
-
-          .form-group
-            = f.label :owner_address_ul
-            = f.text_field :owner_address_ul, class: 'form-control'
-
-        .row
-          .col-sm-4
-            .form-group
-                = f.label :owner_telephone, class: 'control-label text-left'
-                = f.text_field :owner_telephone, class: 'form-control'
-          .col-sm-4.col-sm-offset-4
-            .form-group
-                = f.label :owner_email, class: 'control-label'
-                = f.text_field :owner_email, class: 'form-control'
-
-        label.custom-heading.text-center 
-          = t('declaration_form.vehicle_heading')
-
-        .form-group
-          = f.label :vehicle_model
-          = wrap_input @declaration, :vehicle_model do
-            = f.text_field :vehicle_model, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_year
-          = wrap_input @declaration, :vehicle_year do
-            = f.select :vehicle_year, options_for_select((1930..Date.today.year).to_a.reverse.map {|y| [y, y] }), {}, id: 'vehicle-year'
-      
-        .form-group
-          = f.label :vehicle_type
-          = f.select :vehicle_type, vehicle_types(@declaration), {}, id: 'vehicle-type-id'
-
-        .form-group
-          = f.label :vehicle_category
-          = f.select :vehicle_category, vehicle_categories(@declaration), {}, id: 'vehicle-categories-id'
-
-        .form-group
-          = f.label :vehicle_color
-          = f.text_field :vehicle_color, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_regnum
-          = f.text_field :vehicle_regnum, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_vin
-          = f.text_field :vehicle_vin, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_body
-          = f.text_field :vehicle_body, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_chassis
-          = f.text_field :vehicle_chassis, class: 'form-control'
-
-        .form-group
-          = f.label :vehicle_ecological_class
-          = f.select :vehicle_ecological_class, ecological_classes(@declaration), {}, id: 'ecological-class-id'
-        .row
-          .col-sm-4
-            .form-group
-                = f.label :vehicle_power_hp, class: 'control-label text-left'
-                = f.number_field :vehicle_power_hp, min: 10, max: 700, step: 'any', class: 'form-control text-center'
-          .col-sm-4.col-sm-offset-4
-            .form-group
-                = f.label :vehicle_power_kvt, class: 'control-label'
-                = f.number_field :vehicle_power_kvt, step: 'any', class: 'form-control text-center'
-
-        .row
-          .col-sm-4
-            .form-group
-                = f.label :vehicle_weight_min, class: 'control-label text-left'
-                = f.number_field :vehicle_weight_min, min: 10, max: 20000, class: 'form-control text-center'
-          .col-sm-4.col-sm-offset-4
-            .form-group
-                = f.label :vehicle_weight_max, class: 'control-label'
-                = f.number_field :vehicle_weight_max, class: 'form-control text-center'
-
-        label.custom-heading.text-center 
-          = t('declaration_form.trustee_heading')
-
-        .form-group
-          .col-sm-2.without-padding
-            = f.label :trustee_last_name, class: 'control-label text-left'
-          .col-sm-10.without-padding
-            = f.text_field :trustee_last_name, class: 'form-control'
-
-        .form-group
-          .col-sm-2.without-padding
-            = f.label :trustee_first_name, class: 'control-label text-left'
-          .col-sm-10.without-padding
-            = f.text_field :trustee_first_name, class: 'form-control'
-
-        .form-group
-          .col-sm-2.without-padding
-            = f.label :trustee_second_name, class: 'control-label text-left'
-          .col-sm-10.without-padding
-            = f.text_field :trustee_second_name, class: 'form-control'
-
-        label.custom-heading.text-center 
-          = t('declaration_form.trustee_document_heading')
-
-        .row
-          .col-sm-4.inline-input
-            .form-group
-              .col-sm-5
-                = f.label :trustee_doc_series, class: 'control-label float-right'
-              .col-sm-7
-                = f.text_field :trustee_doc_series, class: 'form-control text-center'
-          .col-sm-4.inline-input
-            .form-group
-              .col-sm-5
-                = f.label :trustee_doc_number, class: 'control-label float-right'
-              .col-sm-7
-                = f.text_field :trustee_doc_number, class: 'form-control text-center'
-          .col-sm-4.inline-input
-            .form-group
-              .col-sm-5
-                = f.label :trustee_doc_date, class: 'control-label float-right'
-              .col-sm-7
-                = f.text_field :trustee_doc_date, start_year: 1990, class: 'form-control datepicker'
-
-        .form-group
-          = f.label :trustee_doc_dept
-          = f.text_field :trustee_doc_dept, class: 'form-control'
-
-        .form-group
-          = f.label :trustee_address
-          = f.text_field :trustee_address, class: 'form-control'
-
-        .row
-          .col-sm-4
-            .form-group
-                = f.label :trustee_telephone, class: 'control-label text-left'
-                = f.text_field :trustee_telephone, class: 'form-control'
-
-        .form-group
-          = f.submit t('declaration_form.process_button'), class: 'btn btn-primary'
+      .form-group
+        = f.submit t('declaration_form.process_button'), class: 'btn btn-primary'
