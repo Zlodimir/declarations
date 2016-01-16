@@ -7,30 +7,42 @@ body
 
 #google-ad-sense
   border: solid 1px #0E0101
+  border-radius: 4px
   height: 90px
-  margin-bottom: 15px
+  margin-bottom: 8px
   width: 100%
 
 #notification-area
-  height: 40px
+  //height: 40px
   left: 0
   position: absolute
   top: 0
   width: 100%
 
-.alert
-  +font-styling(#ffffff, 'Roboto', 15px, 15px, 500)
-  background-color: #1d1d1d
-  border-radius: 0
-  margin: 0
-  opacity: 0.7
-  text-align: center
+  .alert
+    +font-styling(#ffffff, 'Roboto', 15px, 15px, 500)
+    border: 0
+    border-radius: 0
+    margin: 0
+    opacity: 0.7
+    text-align: center
+
+  .notice-info
+    background-color: #1d1d1d
+
+  .alert-info
+    background-color: #C30505
+
+  .close
+    bottom: 4px
+    position: relative
 
 .navbar
   margin-bottom: 5px
   position: relative
 
   .logo
+    display: inline-block
     position: relative
     top: 10px
     width: 130px
@@ -41,7 +53,7 @@ body
   .auth
     position: absolute
     right: 10px
-    top: 20px
+    top: 5px
 
     & a
       +font-styling(#ffffff, 'Roboto', 15px, 15px, 500)
@@ -51,6 +63,9 @@ body
 
     & a:hover
       +font-styling(#D6CECE, 'Roboto', 15px, 15px, 500)
+
+  .dropdown-menu
+    left: 0
 
 .content-wrapper
   margin: 50px auto 150px auto

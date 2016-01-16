@@ -1,0 +1,13 @@
+= form_for @user do |f|
+  = token_tag form_authenticity_token
+  
+  .form-group
+    = f.label :email
+    = f.text_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :username
+    = f.text_field :username, autofocus: true, class: 'form-control'
+
+  .form-group
+    = f.submit t('user_form.save_button'), class: 'btn btn-primary'

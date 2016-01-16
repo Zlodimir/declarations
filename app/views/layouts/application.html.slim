@@ -24,7 +24,7 @@ html
     #notification-area
       - if flash.present?
         - flash.each do |name, msg|
-          = content_tag :div, class: "alert #{flash_class(name)}" do
+          = content_tag :div, class: "alert #{name}-info" do
             = content_tag :button, class: 'close', type: 'button', data: { dismiss: 'alert' } do
               | &times;
             = msg.html_safe
@@ -33,3 +33,4 @@ html
       = yield
 
     = javascript_include_tag 'application'
+    = render 'layouts/ga'

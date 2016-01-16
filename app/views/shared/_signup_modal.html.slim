@@ -16,9 +16,9 @@
 
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'remote-signup-form' }, data: { type: :json }, remote: :true ) do |f|
           .form-group
-            = f.text_field :username, class: 'form-control', placeholder: t('activerecord.attributes.user.username')
-          .form-group
             = f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('activerecord.attributes.user.email')
+          .form-group
+            = f.text_field :username, class: 'form-control', placeholder: t('activerecord.attributes.user.username')
           .form-group
             = f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t('activerecord.attributes.user.password')
           .form-group

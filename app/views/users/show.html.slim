@@ -1,0 +1,16 @@
+table.table.table-hover
+  tr
+    td 
+      h4 = User.human_attribute_name(:email)
+    td
+      h4
+        strong = @user.email
+  tr
+    td 
+      h4 = User.human_attribute_name(:username)
+    td 
+      h4
+        strong = @user.username
+
+= link_to t('user_form.edit_button'), edit_user_path(@user), class: 'btn btn-primary'
+
