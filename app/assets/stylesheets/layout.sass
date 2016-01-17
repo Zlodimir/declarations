@@ -2,7 +2,11 @@
 
 $grey: #64616B
 
+html
+  height: 100%
+
 body
+  height: calc(100% - 20px)
   margin: 10px
 
   .btn
@@ -75,7 +79,8 @@ body
     top: 2px
 
 .content-wrapper
-  margin: 50px auto 100px auto
+  min-height: calc(100% - 325px)
+  margin: 50px auto 20px auto
   width: 65%
 
   .declaration-action-button
@@ -127,12 +132,12 @@ body
 .footer
   background-color: #2C3E50
   border-radius: 4px
-  bottom: 0
+  //bottom: 0
   height: 60px
-  left: 10px
+  //left: 10px
   margin-bottom: 5px
-  position: absolute
-  right: 10px
+  //position: absolute
+  //right: 10px
 
   .contact-email
     +font-styling(#ffffff, 'Roboto', 12px, 15px, 300)
