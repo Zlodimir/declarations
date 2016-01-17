@@ -1,0 +1,25 @@
+.page-profile-declarations
+  table.table.table-striped.table-hover
+    thead
+      tr.border-bottom
+        th.text-center = t('users.declarations.declaration_date')
+        th.text-center = t('users.declarations.vehicle')
+        th.text-center = t('users.declarations.regnum')
+        th.text-center = t('users.declarations.create_date')
+        th.text-center = t('users.declarations.action')
+    tbody
+      - @declarations.each do |declaration|
+        tr
+          td.text-center = declaration.date
+          td = declaration.vehicle_model
+          td = declaration.vehicle_regnum
+          td.text-center = declaration.created_at.strftime('%d.%m.%Y %H:%M')
+          td
+            .declaration-actions
+              = link_to declaration_path(declaration, format: :pdf), target: :blank, class: 'action-link' do
+                = fa_icon 'file-pdf-o 1x', data: { toggle: 'tooltip', placement: 'bottom', title: t('users.declarations.actions.view') }
+              = link_to save_declaration_path(declaration, format: :pdf), target: :blank, class: 'action-link' do
+                = fa_icon 'download 1x', data: { toggle: 'tooltip', placement: 'bottom', title: t('users.declarations.actions.download') }
+              = link_to declaration_path(declaration), method: :delete, data: { confirm: t('users.declarations.actions.trash') }, class: 'action-link' do
+                = fa_icon 'trash-o 1x', data: { toggle: 'tooltip', placement: 'bottom', title: t('users.declarations.actions.delete') }
+  = paginate @declarations, theme: 'twitter-bootstrap-3'

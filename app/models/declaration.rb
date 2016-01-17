@@ -1,6 +1,14 @@
 class Declaration < ActiveRecord::Base
+  paginates_per 20
 
   validates :operation_id, presence: true
+
+  belongs_to :user
+
+  scope :by_create_date_asc, -> { order(created_at: :asc) }
+  scope :by_create_date_desc, -> { order(created_at: :desc) }
+  scope :belongs_to_user, -> { where("COALESCE(user_id, 0) != 0") }
+  scope :not_belongs_to_user, -> { where(user_id: nil) }
 
   def owner_name
     [self.owner_last_name, self.owner_first_name, self.owner_second_name].join(' ')

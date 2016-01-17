@@ -5,6 +5,10 @@ $grey: #64616B
 body
   margin: 10px
 
+  .btn
+    height: 35px
+    padding: 5px 15px 5px
+
 #google-ad-sense
   border: solid 1px #0E0101
   border-radius: 4px
@@ -13,7 +17,6 @@ body
   width: 100%
 
 #notification-area
-  //height: 40px
   left: 0
   position: absolute
   top: 0
@@ -67,8 +70,12 @@ body
   .dropdown-menu
     left: 0
 
+  .declarations-count
+    position: relative
+    top: 2px
+
 .content-wrapper
-  margin: 50px auto 150px auto
+  margin: 50px auto 100px auto
   width: 65%
 
   .declaration-action-button
@@ -117,3 +124,18 @@ body
   .google
     +background-image('gplus')
 
+.footer
+  background-color: #2C3E50
+  border-radius: 4px
+  bottom: 0
+  height: 60px
+  left: 10px
+  margin-bottom: 5px
+  position: absolute
+  right: 10px
+
+  .contact-email
+    +font-styling(#ffffff, 'Roboto', 12px, 15px, 300)
+    left: 20px
+    position: relative
+    top: 18px

@@ -3,11 +3,11 @@
   
   .form-group
     = f.label :email
-    = f.text_field :email, class: 'form-control'
+    = f.text_field :email, autofocus: true, class: 'form-control'
 
   .form-group
     = f.label :username
-    = f.text_field :username, autofocus: true, class: 'form-control'
+    = f.text_field :username, class: 'form-control'
 
   .form-group
     = f.submit t('user_form.save_button'), class: 'btn btn-primary'

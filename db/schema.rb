@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104083830) do
+ActiveRecord::Schema.define(version: 20160116190136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "declarations", force: :cascade do |t|
-    t.date     "date",                                 default: '2015-12-21'
+    t.date     "date"
     t.string   "dept_name",                limit: 255
-    t.integer  "operation_id",                                                null: false
+    t.integer  "operation_id",                                         null: false
     t.string   "owner_last_name",          limit: 255
     t.string   "owner_first_name",         limit: 255
     t.string   "owner_second_name",        limit: 255
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160104083830) do
     t.string   "vehicle_ecological_class", limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "ecological_classes", force: :cascade do |t|
@@ -111,4 +112,5 @@ ActiveRecord::Schema.define(version: 20160104083830) do
   end
 
   add_foreign_key "declarations", "operations", on_delete: :cascade
+  add_foreign_key "declarations", "users"
 end

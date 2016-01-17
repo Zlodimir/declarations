@@ -1,10 +1,6 @@
 .declaration-form
-  / - if Rails.env.production? 
-  /   .heading 
-  /     | Скоро все будет работать
-  / - else
   .heading
-    = t('declaration_form.heading')
+    = t('declaration_form.heading').html_safe
 
   = form_for @declaration, html: { class: 'form-horizontal' } do |f|
     = f.hidden_field :owner_company
@@ -12,7 +8,7 @@
       .col-sm-1.col-sm-offset-4.without-padding
         = f.label :date, class: 'control-label text-left'
       .col-sm-2.without-padding
-        = f.text_field :date, class: 'form-control datepicker'
+        = f.text_field :date, value: @declaration.date || Date.today.strftime('%d.%m.%Y'), class: 'form-control datepicker'
 
     .form-group.without-padding
       = f.label :dept_name
