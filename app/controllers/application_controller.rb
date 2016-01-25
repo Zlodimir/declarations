@@ -24,4 +24,14 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.for(:sign_in) << :login
   end
+
+  def authenticate_admin!
+    if user_signed_in? 
+      unless current_user.is_admin
+        redirect_to root_path(), alert: t('messages.user.restrict_access')
+      end
+    else
+      redirect_to new_user_session_path
+    end
+  end
 end

@@ -29,6 +29,7 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'activeadmin', github: 'activeadmin'
 
 #gem 'backoffice', path: 'engines/backoffice'
 

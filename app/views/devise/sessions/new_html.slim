@@ -1,0 +1,16 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal',  id: 'remote-signin-form'  }, data: { type: :json }, remote: :true) do |f|
+  .form-group
+    = f.text_field :email, autofocus: true, class: 'form-control', placeholder: t('activerecord.attributes.user.email')
+  .form-group
+    = f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t('activerecord.attributes.user.password')
+  .form-group
+    = f.submit t('modal.signin.button'), class: 'btn btn-primary'
+
+  - if devise_mapping.rememberable?
+    .form-group
+      .additional-signin-options
+        .checkbox-inline.pull-left
+          = f.check_box :remember_me, class: 'form-group', checked: true
+          = f.label :remember_me
+        .forgot-password.pull-right
+          = link_to t('modal.signin.forgot_password'), '#', class: 'forgot-password-link'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root 'home#home'
 
   # get '/z/:id'        => 'declarations#show',    as: :declaration
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
       get :save
     end
   end
-  resources :users, only: [:show, :edit, :update]
+  get 'users/show/:id'  => 'users#show',          as: :show_user
+  resources :users, only: [:edit, :update]
   resources :operations, only: :index
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks',

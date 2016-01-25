@@ -184,6 +184,7 @@ ru:
       update:
         success: 'Профиль успешно сохранен'
         fail: 'Ошибка сохранения профиля'
+      restrict_access: 'Не достаточно привилегий'
     declaration:
       delete:
         success: 'Заявление успешно удалено'

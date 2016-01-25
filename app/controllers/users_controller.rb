@@ -9,9 +9,13 @@ class UsersController < ApplicationController
     
   end
 
+  def new
+    
+  end
+
   def update
     if @user.update_attributes(user_params)
-      redirect_to user_path(@user), notice: t('messages.user.update.success')
+      redirect_to show_user_path(@user), notice: t('messages.user.update.success')
     else
       flash[:alert] = t('messages.user.update.fail')
       render :edit
