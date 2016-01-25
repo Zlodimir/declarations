@@ -187,10 +187,11 @@ pdf.stroke do
     pdf.text t('statement_declaration.trustee_block.document') + ' ' + @declaration.trustee_document.to_s, leading: 9
   end
   
-  pdf.bounding_box([10, 86], width: 550, height: 50) do
+  pdf.bounding_box([10, 86], width: 550, height: 33) do
     #pdf.stroke_bounds
     pdf.text t('statement_declaration.trustee_block.address') + ' ' + @declaration.trustee_address, leading: 9
   end
+  pdf.draw_text @declaration.trust_doc, at: [10, 36]
   pdf.draw_text @declaration.trustee_telephone, at: [15, 20]
   pdf.draw_text @declaration.date, at: [140, 20]
   pdf.bounding_box([320, 28], width: 240, height: 13) do
@@ -376,8 +377,7 @@ pdf.stroke do
   pdf.draw_text t('statement_declaration_second.get_documents_block.other'), at: [5, 67]
 
   pdf.draw_text t('statement_declaration_second.get_documents_block.date'), at: [10, 41], size: 8
-  pdf.draw_text t('statement_declaration_second.vehicle_block.sign'), at: [250, 41], size: 8
-  pdf.draw_text t('statement_declaration_second.vehicle_block.official'), at: [450, 41], size: 8
+  pdf.draw_text t('statement_declaration_second.get_documents_block.sign'), at: [440, 41], size: 8
 
   ###################################
   # sign block

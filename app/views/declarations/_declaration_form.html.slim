@@ -222,6 +222,7 @@
             .col-sm-7
               = f.text_field :trustee_doc_date, start_year: 1990, class: 'form-control datepicker'
 
+
       .form-group
         = f.label :trustee_doc_dept
         = f.text_field :trustee_doc_dept, class: 'form-control'
@@ -229,6 +230,34 @@
       .form-group
         = f.label :trustee_address
         = f.text_field :trustee_address, class: 'form-control'
+
+      label.custom-heading.text-center 
+        = t('statement_declaration.trustee_block.trust_doc')
+
+      .row
+        .col-sm-4.inline-input
+          .form-group
+            .col-sm-5
+              = f.label :trustee_series, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_series, class: 'form-control text-center'
+        .col-sm-4.inline-input
+          .form-group
+            .col-sm-5
+              = f.label :trustee_number, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_number, class: 'form-control text-center'
+        .col-sm-4.inline-input
+          .form-group
+            .col-sm-5
+              = f.label :trustee_date, class: 'control-label float-right'
+            .col-sm-7
+              = f.text_field :trustee_date, start_year: 1990, class: 'form-control datepicker'
+
+
+      .form-group
+        = f.label :trustee_dept
+        = f.text_field :trustee_dept, class: 'form-control'
 
       .row
         .col-sm-4

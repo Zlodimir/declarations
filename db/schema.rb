@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122114629) do
+ActiveRecord::Schema.define(version: 20160125164919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20160122114629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "trustee_series",           limit: 8
+    t.string   "trustee_number",           limit: 10
+    t.date     "trustee_date"
+    t.string   "trustee_dept",             limit: 255
   end
 
   create_table "ecological_classes", force: :cascade do |t|

@@ -47,4 +47,13 @@ class Declaration < ActiveRecord::Base
 
     return sign_person
   end
+
+  def trust_doc
+    return '' if !self.trustee?
+    trust_doc = "#{I18n.t('statement_declaration.trustee_block.entity')}: "
+    trust_doc += "#{Declaration.human_attribute_name('trustee_series')}: #{self.trustee_series} " if self.trustee_series.present?
+    trust_doc += "#{Declaration.human_attribute_name('trustee_number')}: #{self.trustee_number} " if self.trustee_number.present?
+    trust_doc += "#{Declaration.human_attribute_name('trustee_date')}: #{self.trustee_date.strftime('%d.%m.%Y')} " if self.trustee_date.present?
+    trust_doc += "#{Declaration.human_attribute_name('trustee_dept')}: #{self.trustee_dept} " if self.trustee_dept.present?
+  end
 end
