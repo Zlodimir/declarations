@@ -15,6 +15,8 @@ html
     = csrf_meta_tags
     = include_gon
     = render 'layouts/head_content'
+    - if content_for?(:head)
+      = content_for(:head)
   body
     = render 'shared/google'
     = render 'shared/signup_modal'

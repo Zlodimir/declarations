@@ -5,3 +5,15 @@
     = t('home.description')
   .buttons
     = link_to t('home.new_declaration'), new_declaration_path(), class: 'btn btn-primary'
+
+  - app_id = Rails.env.production? ? 5227223 : 5224461
+
+  - content_for(:head) do
+    = javascript_include_tag '//vk.com/js/api/openapi.js?121'
+
+    javascript:
+      VK.init({apiId: "#{app_id}", onlyWidgets: true});
+
+  #vk_comments
+    javascript:
+      VK.Widgets.Comments("vk_comments", {limit: 10, width: "665", attach: "*"});
