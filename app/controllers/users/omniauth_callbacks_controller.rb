@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #user.save!
     if user.persisted?
       sign_in_and_redirect user, event: :authentication
+      cookies.permanent[:declarations_signup] = { value: true, expires: 365.day.from_now }
       set_flash_message(:notice, :success, kind: request.env['omniauth.auth'].provider.capitalize) if is_navigational_format?
     else
       #session["devise.#{request.env['omniauth.auth'].provider}_data"] = request.env['omniauth.auth']

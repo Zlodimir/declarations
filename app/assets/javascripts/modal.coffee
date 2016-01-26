@@ -38,6 +38,7 @@ $ ->
     if xhr['status'] == 200
       redirectToRoot()
     else
+      $.cookie('declarations_signup', true, { expires: 365 })
       $('#signin-form').find('.warning-wrapper').html(parseErrors(xhr))
 
   $signinForm.on 'ajax:success', (event, xhr, settings) ->
