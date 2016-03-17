@@ -30,8 +30,7 @@ gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'activeadmin', github: 'activeadmin'
-
-#gem 'backoffice', path: 'engines/backoffice'
+gem 'feedjira'
 
 group :development do
   gem 'spring'

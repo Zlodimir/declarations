@@ -1,12 +1,8 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-
-  #http_basic_authenticate_with name: 'user', password: '1dkjJsdlf_s' if Rails.env.production?
-
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :get_rss_feed
 
   include Concerns::ErrorsHandler
 
@@ -33,5 +29,10 @@ class ApplicationController < ActionController::Base
     else
       redirect_to new_user_session_path
     end
+  end
+
+  def get_rss_feed
+    url = 'https://news.yandex.ru/auto.rss'
+    @feed = Feedjira::Feed.fetch_and_parse url
   end
 end

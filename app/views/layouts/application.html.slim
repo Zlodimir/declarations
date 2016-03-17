@@ -34,6 +34,11 @@ html
               | &times;
             = msg.html_safe
     .clearfix
+    .rss-wrapper
+      - @feed.entries.first(10).each do |n|
+        .entry
+          = n.published.strftime('%d.%m.%y')
+          =< link_to n.title, n.url, target: :blank
     .content-wrapper
       = yield
 
