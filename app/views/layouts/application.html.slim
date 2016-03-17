@@ -6,7 +6,7 @@ html
     meta name='viewport' content='width=device-width, initial-scale=1'
     meta name='robots' content='all'
     meta name='keywords' content='ГИБДД, МРЭО, Заявление Онлайн, Заявление на постановку на учет, Заявление на снятие с учета, Заявление в МРЕО онайлн, Заявление в ГИБДД онлайн, Заявление в ГАИ Онлайн, Заявление в PDF, постановка на учет, снятие с учета, бланк заявления в МРЭО, бланк заявления в ГАИ, бланк заявления в ГИБДД, бланк на постановку на учет, поставить автомобиль на учет, снять автомобиль с учета'
-    meta name='description' content='МРЭО Ассистент - лучший сервис для подготовки заявлений в МРЕО на совершение регистрационных действий. Все что необходимо сделать - заполнить онлайн-форму операции над транспортным средством и распечатать полученное, актуальное заявление!'
+    meta name='description' content='МРЭО Ассистент - лучший сервис для подготовки заявлений в МРЭО на совершение регистрационных действий. Все что необходимо сделать - заполнить онлайн-форму операции над транспортным средством и распечатать полученное, актуальное заявление!'
     meta name='wmail-verification' content='cb813367de3674acab10a6e81f8a68d9'
     meta name='msvalidate.01' content='1A11762D0A6AE3DB246AFAAFFE39A15D'
     title МРЭО Ассистент
@@ -18,7 +18,8 @@ html
     - if content_for?(:head)
       = content_for(:head)
   body
-    = render 'shared/google'
+    .google-ad-sense
+      = render 'shared/google'
     = render 'shared/signup_modal'
     = render 'shared/signin_modal'
     = render 'shared/forgot_password_modal'
