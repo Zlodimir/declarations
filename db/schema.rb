@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125164919) do
+ActiveRecord::Schema.define(version: 20160323123239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,32 +41,32 @@ ActiveRecord::Schema.define(version: 20160125164919) do
     t.string   "owner_company_name",       limit: 255
     t.date     "owner_birth_date"
     t.date     "owner_registration_date"
-    t.string   "owner_doc_series",         limit: 8
-    t.string   "owner_doc_number",         limit: 8
+    t.string   "owner_doc_series",         limit: 25
+    t.string   "owner_doc_number",         limit: 25
     t.date     "owner_doc_date"
     t.string   "owner_doc_dept",           limit: 255
     t.string   "owner_inn",                limit: 15
     t.string   "owner_address_fl",         limit: 300
     t.string   "owner_address_ul",         limit: 300
-    t.string   "owner_telephone",          limit: 10
+    t.string   "owner_telephone",          limit: 25
     t.string   "owner_email",              limit: 35
     t.boolean  "owner_company",                        default: false
     t.string   "trustee_last_name",        limit: 255
     t.string   "trustee_first_name",       limit: 255
     t.string   "trustee_second_name",      limit: 255
-    t.string   "trustee_doc_series",       limit: 8
-    t.string   "trustee_doc_number",       limit: 8
+    t.string   "trustee_doc_series",       limit: 25
+    t.string   "trustee_doc_number",       limit: 25
     t.date     "trustee_doc_date"
     t.string   "trustee_doc_dept",         limit: 255
-    t.string   "trustee_address",          limit: 300
-    t.string   "trustee_telephone",        limit: 10
+    t.string   "trustee_address",          limit: 255
+    t.string   "trustee_telephone",        limit: 25
     t.string   "vehicle_model",            limit: 100
     t.integer  "vehicle_year"
     t.string   "vehicle_type"
-    t.string   "vehicle_category",         limit: 10
+    t.string   "vehicle_category",         limit: 25
     t.string   "vehicle_color",            limit: 255
-    t.string   "vehicle_regnum",           limit: 12
-    t.string   "vehicle_vin",              limit: 17
+    t.string   "vehicle_regnum",           limit: 25
+    t.string   "vehicle_vin",              limit: 25
     t.string   "vehicle_body",             limit: 20
     t.string   "vehicle_chassis",          limit: 20
     t.float    "vehicle_power_hp"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20160125164919) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "trustee_series",           limit: 8
-    t.string   "trustee_number",           limit: 10
+    t.string   "trustee_series",           limit: 25
+    t.string   "trustee_number",           limit: 25
     t.date     "trustee_date"
     t.string   "trustee_dept",             limit: 255
   end
