@@ -14,6 +14,7 @@
     javascript:
       VK.init({apiId: "#{app_id}", onlyWidgets: true});
 
-  #vk_comments
-    javascript:
-      VK.Widgets.Comments("vk_comments", {limit: 10, width: "665", attach: "*"});
+  - if Rails.env.production?
+    #vk_comments
+      javascript:
+        VK.Widgets.Comments("vk_comments", {limit: 10, width: "665", attach: "*"});

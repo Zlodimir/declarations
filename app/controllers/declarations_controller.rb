@@ -1,5 +1,6 @@
 class DeclarationsController < ApplicationController
   before_action :find_declaration, only: [:edit, :show, :update, :destroy, :save]
+  before_action :authenticate_user!, only: [:index, :destroy]
 
   def index
     @declarations = current_user.declarations.by_create_date_desc.page(params[:page])
