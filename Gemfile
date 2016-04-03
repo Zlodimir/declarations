@@ -31,6 +31,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'activeadmin', github: 'activeadmin'
 gem 'feedjira'
+gem 'whenever', require: false
 
 group :development do
   gem 'spring'
