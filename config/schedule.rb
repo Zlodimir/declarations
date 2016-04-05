@@ -18,8 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-# every 1.day, at: '4:00 am' do
-every 2.minute do
+every 1.day, at: '4:00 am' do
   # update article counts in journals
   rake 'ds:drop_unlinked_declarations'
 end
